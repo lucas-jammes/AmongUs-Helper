@@ -71,12 +71,14 @@ namespace AmongUs_Helper
 
         private void Refresh_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            // Reset all labels to their default state
             foreach (object? element in MainGrid.Children)
             {
                 if (element is Label label && label.Name != "WindowTitle")
                 {
+                    // Reset the label's foreground color and content
                     label.Foreground = Brushes.White;
-                    label.Content = label.Name.Replace("_Label", ""); // Remet le nom du perso
+                    label.Content = label.Name.Replace("_Label", "");
                 }
             }
         }

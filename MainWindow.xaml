@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="AmongUs Helper" Height="800" Width="800"
         ResizeMode="NoResize" WindowStyle="None">
+
     <Grid x:Name="MainGrid">
         <Grid.Background>
             <ImageBrush ImageSource="/assets/images/misc/background.png"/>
@@ -111,6 +112,6 @@
         <Label Name="Coral_Label" Content="Coral" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="674,659,0,0" VerticalAlignment="Top" Width="100"/>
 
         <Image Name="Close_Button" HorizontalAlignment="Left" Height="30" Margin="760,9,10,761" VerticalAlignment="Top" Width="30" Cursor="Hand" Source="/assets/images/misc/close_button.png" MouseLeftButtonDown="Close_Button_MouseLeftButtonDown"/>
-        <Image Name="Refresh_Button" HorizontalAlignment="Left" Height="30" Margin="730,7,0,0" VerticalAlignment="Top" Width="30" Cursor="Hand" Source="/assets/images/misc/refresh_button.png" MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown"/>
+        <Image Name="Refresh_Button" HorizontalAlignment="Left" Height="24" Margin="731,11,0,0" VerticalAlignment="Top" Width="25" Cursor="Hand" Source="/assets/images/misc/refresh_button.png" MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown"/>
     </Grid>
 </Window>
