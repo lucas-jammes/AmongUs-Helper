@@ -1,4 +1,4 @@
-# AmongUs Helper
+# AmongUs-Helper
 
 AmongUs Helper is a **lightweight and simple desktop application** designed to help players during a game of **Among Us** by tracking the state of each character.  
 
