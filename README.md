@@ -64,5 +64,5 @@ MIT License — free to use and modify.
 
 ## 💬 Contact
 
-If you like the project, feel free to star ⭐ the repository!
+If you like the project, feel free to star ⭐ the repository!  
 For suggestions or issues, open a ticket!
