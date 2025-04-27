@@ -22,7 +22,7 @@ Built with **WPF (.NET 9.0)**, this tool is fast, portable, and very easy to use
 
 ## 🛠 Installation  
 
-1. Download the latest `.zip` release [here](https://github.com/lucas-jammes/AmongUs-Helper/releases/tag/prod "Link to release page").  
+1. Download the latest `.zip` release [here](https://github.com/lucas-jammes/AmongUs-Helper/releases/tag/prod#:~:text=AmongUsHelper%2Dv1.0.0.zip "Link to the zip folder").  
 2. Extract the archive.  
 3. Launch `AmongUs Helper.exe`.  
 
