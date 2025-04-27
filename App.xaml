@@ -1,0 +1,12 @@
+﻿<Application x:Class="AmongUs_Helper.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AmongUs_Helper"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="/AmongUs Helper;component/Assets/Fonts/amongus.ttf#Amatic SC"/>
+            <Setter Property="Foreground" Value="#EBEBEB"/>
+        </Style>
+    </Application.Resources>
+</Application>
