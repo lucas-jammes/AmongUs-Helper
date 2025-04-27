@@ -2,7 +2,7 @@
 
 AmongUs Helper is a **lightweight and simple desktop application** designed to help players during a game of **Among Us** by tracking the state of each character.  
 
-Built with **WPF (.NET 8.0)**, this tool is fast, portable, and very easy to use.  
+Built with **WPF (.NET 9.0)**, this tool is fast, portable, and very easy to use.  
 
 ---
 
