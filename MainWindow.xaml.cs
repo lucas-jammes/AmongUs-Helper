@@ -125,5 +125,14 @@ namespace Sus_Companion
         {
             DragMove();
         }
+
+        private void GitHub_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://github.com/lucas-jammes/SusCompanion",
+                UseShellExecute = true
+            });
+        }
     }
 }

@@ -31,6 +31,7 @@
     <None Remove="assets\images\characters\Yellow.png" />
     <None Remove="assets\images\misc\background.png" />
     <None Remove="assets\images\misc\close_button.png" />
+    <None Remove="assets\images\misc\github_button.png" />
     <None Remove="assets\images\misc\refresh_button.png" />
   </ItemGroup>
 
@@ -100,6 +101,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="assets\images\misc\close_button.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="assets\images\misc\github_button.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="assets\images\misc\refresh_button.png">
