@@ -33,6 +33,7 @@
     <None Remove="assets\images\misc\close_button.png" />
     <None Remove="assets\images\misc\github_button.png" />
     <None Remove="assets\images\misc\refresh_button.png" />
+    <None Remove="assets\images\misc\refresh_button.svg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -106,7 +107,7 @@
     <Resource Include="assets\images\misc\github_button.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="assets\images\misc\refresh_button.png">
+    <Resource Include="assets\images\misc\refresh_button.svg">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
