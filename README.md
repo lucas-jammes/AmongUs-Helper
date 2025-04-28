@@ -1,5 +1,7 @@
 ![License](https://img.shields.io/github/license/lucas-jammes/SusCompanion)
 ![Release](https://img.shields.io/github/v/release/lucas-jammes/SusCompanion)
+![Downloads](https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total)
+
 
 # Sus Companion
 
@@ -30,15 +32,15 @@ No installation required!
   - ![808080](https://place-hold.it/10/FFFFFF/FFFFFF "White") → **Alive** 
 - ↻ **Press the Refresh button** (top right) to reset all states at once.  
 
-> Use the app during gameplay to keep track of players behavior easily!    
+> Use the app during gameplay to keep track of players' behavior easily!    
 
 ---
 
 ## 📺 Video Tutorial
 
-Watch the turial below:  
+Watch the tutorial below:  
 
-![tutorial](https://github.com/user-attachments/assets/bc299cda-9419-4a8e-b667-19da18e2b8c2)
+![tutorial](./assets/images/misc/tutorial.gif "GIF image showing how app works")
 
 ---
 
