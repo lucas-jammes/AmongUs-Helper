@@ -113,13 +113,6 @@ namespace Sus_Companion
             }
         }
 
-
-        // Close when close_button is clicked
-        private void Close_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Close();
-        }
-
         // Drag Window by clicking on the top bar
         private void TopBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -133,6 +126,12 @@ namespace Sus_Companion
                 FileName = "https://github.com/lucas-jammes/SusCompanion",
                 UseShellExecute = true
             });
+        }
+
+        // Close when close_button is clicked
+        private void Close_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Close();
         }
     }
 }
