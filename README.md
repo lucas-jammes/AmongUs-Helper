@@ -28,7 +28,7 @@ No installation required!
 
 Here is a video guide :  
 
-![tutorial](https://github.com/user-attachments/assets/97f08424-7b7e-45b6-9295-bbfdbaec97e1 "Change status by clicking on the crewmates!")  
+![tutorial](https://github.com/user-attachments/assets/bc299cda-9419-4a8e-b667-19da18e2b8c2)
 
 ---
 
