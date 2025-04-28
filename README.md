@@ -32,13 +32,9 @@ No installation required!
   - ![808080](https://place-hold.it/10/FFFFFF/FFFFFF "White") → **Alive** 
 - ↻ **Press the Refresh button** (top right) to reset all states at once.  
 
-> Use the app during gameplay to keep track of players' behavior easily!    
-
 ---
 
 ## 📺 Video Tutorial
-
-Watch the tutorial below:  
 
 ![tutorial](./assets/images/misc/tutorial.gif "GIF image showing how app works")
 
