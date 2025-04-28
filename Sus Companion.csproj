@@ -135,9 +135,10 @@
 	<Product>Sus Companion</Product>
 	<AssemblyTitle>Sus Companion</AssemblyTitle>
 	<Authors>Lucas Jammes</Authors>
-	<Version>1.3.*</Version>
-	<FileVersion>1.3.*</FileVersion>
-	<AssemblyVersion>1.3.*</AssemblyVersion>
+	<Version>1.3.1</Version>
+	<FileVersion>1.3.1.0</FileVersion>
+	<AssemblyVersion>1.3.1</AssemblyVersion>
 	<Description>Lightweight app to help AmongUs players!</Description>
+	<NeutralLanguage>en-US</NeutralLanguage>
   </PropertyGroup>
 </Project>
