@@ -2,12 +2,10 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using Sus_Companion.Properties;
 
-namespace AmongUs_Helper
+namespace Sus_Companion
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -19,7 +17,9 @@ namespace AmongUs_Helper
         {
             // Check if the sender is an Image and if its Label exists
             if (sender is not Image img || FindName($"{img.Name}_Label") is not Label associatedLabel)
+            {
                 return;
+            }
 
             // If the character is dead, reset the state
             if (img.Opacity != 1.0)
@@ -62,7 +62,9 @@ namespace AmongUs_Helper
         {
             // Check if the sender is an Image and if its Label exists
             if (sender is not Image img || FindName($"{img.Name}_Label") is not Label label)
+            {
                 return;
+            }
 
             // Verify if the character is alive
             bool isAlive = img.Opacity == 1.0;
@@ -75,7 +77,7 @@ namespace AmongUs_Helper
 
         private void Refresh_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            foreach (var element in MainGrid.Children)
+            foreach (object? element in MainGrid.Children)
             {
                 switch (element)
                 {
@@ -91,6 +93,26 @@ namespace AmongUs_Helper
                 }
             }
         }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            Settings.Default.WindowTop = Top;
+            Settings.Default.WindowLeft = Left;
+            Settings.Default.Save();
+            base.OnClosing(e);
+        }
+
+        protected override void OnInitialized(EventArgs e)
+        {
+            base.OnInitialized(e);
+
+            if (Settings.Default.WindowTop != 0 || Settings.Default.WindowLeft != 0)
+            {
+                Top = Settings.Default.WindowTop;
+                Left = Settings.Default.WindowLeft;
+            }
+        }
+
 
         // Close when close_button is clicked
         private void Close_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

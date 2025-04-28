@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace AmongUs_Helper
+namespace Sus_Companion
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35919.96
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmongUs Helper", "AmongUs Helper.csproj", "{EF6C1DF7-4609-46B4-9F4D-2C46FBFBE569}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sus Companion", "Sus Companion.csproj", "{EF6C1DF7-4609-46B4-9F4D-2C46FBFBE569}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

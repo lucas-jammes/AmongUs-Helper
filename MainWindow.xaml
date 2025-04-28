@@ -1,11 +1,11 @@
-﻿<Window x:Class="AmongUs_Helper.MainWindow"
+﻿<Window x:Class="Sus_Companion.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AmongUs_Helper"
+        xmlns:local="clr-namespace:Sus_Companion"
         mc:Ignorable="d"
-        Title="AmongUs Helper" Height="800" Width="800"
+        Title="Sus Companion" Height="800" Width="800"
         ResizeMode="NoResize" WindowStyle="None">
 
     <Grid x:Name="MainGrid">
@@ -19,7 +19,7 @@
             </Rectangle.Effect>
         </Rectangle>
 
-        <Label Name="WindowTitle" Content="AmongUs Helper" HorizontalAlignment="Left" FontSize="32" VerticalAlignment="Top" Height="58" Width="143" Margin="10,0,0,0"/>
+        <Label Name="WindowTitle" Content="Sus Companion" HorizontalAlignment="Left" FontSize="32" VerticalAlignment="Top" Height="58" Width="143" Margin="10,0,0,0"/>
 
         <Border BorderBrush="#FFFFFF" Height="100" Width="100" BorderThickness="1" Margin="24,141,676,559" CornerRadius="10">
             <Image Name="Red" Source="/Assets/Images/Characters/Red.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
