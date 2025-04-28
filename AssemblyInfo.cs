@@ -13,4 +13,6 @@ using System.Windows;
 [assembly: AssemblyCompany("Lucas Jammes")]
 [assembly: AssemblyProduct("Sus Companion")]
 [assembly: AssemblyCopyright("Copyright © Lucas Jammes 2025")]
-
+[assembly: AssemblyVersion("1.3.1.0")]
+[assembly: AssemblyFileVersion("1.3.1.0")]
+[assembly: AssemblyDescription("Lightweight app designed to help AmongUs players!")]
