@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows</TargetFramework>
-    <RootNamespace>AmongUs_Helper</RootNamespace>
+    <RootNamespace>Sus_Companion</RootNamespace>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
@@ -38,6 +38,14 @@
     <None Remove="assets\sounds\dead.wav" />
   </ItemGroup>
 
+	<!-- Include the sound files when publishing -->
+	<ItemGroup>
+		<Content Include="assets\sounds\dead.wav">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</Content>
+	</ItemGroup>
+	
   <ItemGroup>
     <Content Include="assets\images\misc\icon.ico" />
   </ItemGroup>
@@ -106,9 +114,9 @@
     <Resource Include="assets\images\misc\tutorial.gif">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Content Include="assets\sounds\dead.wav">
+    <EmbeddedResource Include="assets\sounds\dead.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

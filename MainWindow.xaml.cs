@@ -14,6 +14,9 @@ namespace Sus_Companion
         // Enable sound by default
         private bool IsSoundEnabled = true;
 
+        // List to keep track of active MediaPlayer instances
+        private readonly List<MediaPlayer> _activePlayers = new();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -130,7 +133,7 @@ namespace Sus_Companion
             if (isAlive)
             {
                 // Play the sound for dead character
-                PlaySound("assets/sounds/dead.wav", 0.2);
+                PlaySound("dead.wav");
                 img.Opacity = isAlive ? 0.15 : 1.0;
                 label.Foreground = isAlive ? Brushes.DarkSlateGray : Brushes.White;
                 label.Content = isAlive ? "DEAD" : label.Name.Replace("_Label", "");
@@ -315,25 +318,37 @@ namespace Sus_Companion
         /// </summary>
         /// <param name="soundFile">The file path to the sound file</param>
         /// <param name="volume">The volume level (0.0 to 1.0)</param>
-        private void PlaySound(string soundFile, double volume)
+        private void PlaySound(string resourceName, double volume = 1.0)
         {
-            // Skip if sound is disabled
-            if (!IsSoundEnabled)
+            string resourcePath = $"Sus_Companion.assets.sounds.{resourceName}"; // adapte ton namespace
+
+            using var stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
+            if (stream == null)
             {
+                MessageBox.Show($"Resource {resourcePath} not found.");
                 return;
             }
 
-            // Play kill sound effect
-            if (File.Exists(soundFile))
+            // Créer un fichier temporaire avec extension .wav
+            string tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.wav");
+            using (var fileStream = File.Create(tempFile))
             {
-                MediaPlayer player = new();
-                Uri uri = new(new FileInfo(soundFile).FullName, UriKind.Absolute);
-                player.Open(uri);
-                player.Volume = volume;
-                player.Play();
-
-                player.MediaEnded += (s, e) => player.Close();
+                stream.CopyTo(fileStream);
             }
+
+            var player = new MediaPlayer();
+            player.Open(new Uri(tempFile, UriKind.Absolute));
+            player.Volume = volume;
+            player.Play();
+
+            _activePlayers.Add(player);
+            player.MediaEnded += (s, e) =>
+            {
+                player.Close();
+                _activePlayers.Remove(player);
+
+                try { File.Delete(tempFile); } catch { /* ignore delete failure */ }
+            };
         }
 
         #endregion
