@@ -68,4 +68,4 @@ For suggestions or issues, open a ticket!
 ---
 
 [release-page]:https://github.com/lucas-jammes/SusCompanion/releases/latest "Latest release"
-[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.3.1/Sus_Companion.exe "Direct download"
+[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.4.0/Sus_Companion.exe "Direct download"
