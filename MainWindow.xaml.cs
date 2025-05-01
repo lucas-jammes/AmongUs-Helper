@@ -73,38 +73,42 @@ namespace Sus_Companion
         private void Character_LeftClick(object sender, MouseButtonEventArgs e)
         {
             // Check if the sender is an Image and if its Label exists
-            if (sender is not Image img || FindName($"{img.Name}_Label") is not Label associatedLabel)
+            if (sender is not Image img) return;
+            if (FindName($"{img.Name}_Label") is not Label label) return;
+
+            // If the character is dead (opacity < 1.0), set it to ALIVE state
+            if (img.Opacity < 1.0)
             {
+                img.Opacity = 1.0;
+                img.Tag = 0;
+                label.Foreground = Brushes.White;
+                label.Content = img.Name;
+                UpdateStats();
                 return;
             }
 
-            // If the character is dead, reset the state
-            if (img.Opacity != 1.0)
+            // Else, cycle through the states
+            int state = img.Tag is int t ? t : 0;
+            state = (state + 1) % 3;
+            img.Tag = state;
+
+            // Set the label content and color based on the state
+            switch (state)
             {
-                ResetCharacterState(img, associatedLabel);
-                return;
+                case 1:
+                    label.Foreground = Brushes.LimeGreen;
+                    label.Content = "SAFE";
+                    break;
+                case 2:
+                    label.Foreground = Brushes.Red;
+                    label.Content = "SUS";
+                    break;
+                default:
+                    label.Foreground = Brushes.White;
+                    label.Content = img.Name;
+                    break;
             }
 
-            // Read Tag value to determine the state
-            int state = img.Tag is int tag ? tag : 0;
-
-            // Update the state and label based on the current state
-            (Brush color, string content) = state switch
-            {
-                0 => (Brushes.LimeGreen, "SAFE"),
-                1 => (Brushes.Red, "SUS"),
-                2 => (Brushes.White, associatedLabel.Name.Replace("_Label", "")),
-                _ => (Brushes.White, associatedLabel.Name.Replace("_Label", "")),
-            };
-
-            // Assign the new color and content to the label
-            associatedLabel.Foreground = color;
-            associatedLabel.Content = content;
-
-            // Increment the state
-            img.Tag = (state + 1) % 3;
-
-            // Update the Stats label located at the bottom of the window
             UpdateStats();
         }
 
@@ -114,50 +118,32 @@ namespace Sus_Companion
         private void Character_RightClick(object sender, MouseButtonEventArgs e)
         {
             // Check if the sender is an Image and if its Label exists
-            if (sender is not Image img || FindName($"{img.Name}_Label") is not Label label)
+            if (sender is not Image img) return;
+            if (FindName($"{img.Name}_Label") is not Label label) return;
+
+            // Check if the character is dead (opacity < 1.0)
+            bool isDead = img.Opacity < 1.0;
+
+            if (isDead)
             {
-                return;
+                // Set character to ALIVE state
+                img.Opacity = 1.0;
+                img.Tag = 0;
+                label.Foreground = Brushes.White;
+                label.Content = img.Name;
             }
-
-            // Verify if the character is alive
-            bool isAlive = img.Opacity == 1.0;
-
-
-            if (isAlive)
-            {
-                // Play the sound for dead character
-                PlaySound("dead.wav");
-
-                // Set the opacity to 0.15 and change the label color to dark gray
-                img.Opacity = isAlive ? 0.15 : 1.0;
-                label.Foreground = isAlive ? Brushes.DarkSlateGray : Brushes.White;
-                label.Content = isAlive ? "DEAD" : label.Name.Replace("_Label", "");
-            }
-
             else
             {
-                // Change the opacity back to 1.0 and reset the label color and content
-                img.Opacity = 1.0;
-                label.Foreground = Brushes.White;
-                label.Content = label.Name.Replace("_Label", "");
+                // Play the kill sound effect
+                PlaySound("dead.wav");
+
+                // Set character to DEAD state
+                img.Opacity = 0.15;
+                label.Foreground = Brushes.DarkSlateGray;
+                label.Content = "DEAD";
             }
 
-            // Update the Stats label located at the bottom of the window
             UpdateStats();
-        }
-
-        /// <summary>
-        /// Resets the visual state of a character image and its associated label.
-        /// </summary>
-        /// <param name="img">The character image control</param>
-        /// <param name="label">The label control associated with the character</param>
-        private void ResetCharacterState(Image img, Label label)
-        {
-            // Reset the character state to default values
-            img.Opacity = 1.0;
-            img.Tag = 0;
-            label.Foreground = Brushes.White;
-            label.Content = label.Name.Replace("_Label", "");
         }
 
         #endregion
@@ -172,7 +158,6 @@ namespace Sus_Companion
             // Refresh the state of all characters
             foreach (object? element in MainGrid.Children)
             {
-                // Check if the element is a Label or an Image
                 switch (element)
                 {
                     // Reset the state of Labels
@@ -182,31 +167,36 @@ namespace Sus_Companion
                         break;
 
                     case Label label when label.Name == "Stats":
-                        // Reset the state of Stats label
+                        // Reset the Stats label
                         UpdateStats();
                         break;
 
-                    // Reset the state of Images
+                    // Reset the Tag only (keep opacity < 1.0 to let the animation play)
                     case Border { Child: Image img }:
                         img.Tag = 0;
-                        img.Opacity = 1.0;
                         break;
                 }
             }
 
-            // Start the refresh animation, 
+            // Disable the button during animation
             Refresh_Button.IsEnabled = false;
-            Refresh_Button_Animation();
 
+            // Start the reset and the refresh icon animations
+            RefreshButtonAnimation();
+            ResetCharactersAnimation();
+
+            // Delay according to the animation duration
             await Task.Delay(500);
 
+            // Enable the button after the animation
             Refresh_Button.IsEnabled = true;
         }
+
 
         /// <summary>
         /// Starts a single 360-degree rotation animation on the refresh icon
         /// </summary>
-        private void Refresh_Button_Animation()
+        private void RefreshButtonAnimation()
         {
             DoubleAnimation rotationAnimation = new()
             {
@@ -378,6 +368,42 @@ namespace Sus_Companion
                 try { File.Delete(tempFile); } catch { /* ignore delete failure */ }
             };
         }
+
+        /// <summary>
+        ///  Resets the animation of all characters to their initial state.
+        /// </summary>
+        private void ResetCharactersAnimation()
+        {
+            var images = MainGrid.Children
+                .OfType<Border>()
+                .Select(b => b.Child)
+                .OfType<Image>();
+
+            foreach (var img in images)
+            {
+                if (img.Opacity < 1.0)
+                {
+                    // Set character to Alive state
+                    img.Opacity = 1.0;
+
+                    // Start Fade In animation (opacity from 0.15 to 1.0 in 0.5 seconds)
+                    var fadeIn = new DoubleAnimation
+                    {
+                        From = 0.15,
+                        To = 1.0,
+                        Duration = TimeSpan.FromSeconds(0.5),
+                        EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut },
+                        FillBehavior = FillBehavior.Stop
+                    };
+
+                    // Begin the animation
+                    img.BeginAnimation(UIElement.OpacityProperty, fadeIn);
+                }
+            }
+
+            UpdateStats();
+        }
+
 
         #endregion
     }
