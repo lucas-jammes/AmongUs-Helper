@@ -1009,6 +1009,36 @@
                VerticalAlignment="Top"
                Width="92"/>
 
+
+        <!-- Stats Label -->
+        <Label Name ="Stats"
+               FontSize="28"
+               Content="STATS"
+               HorizontalAlignment="Left"
+               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               Margin="162,745,0,0"
+               VerticalAlignment="Top"
+               Width="482"/>
+
+        <!-- Sound control -->
+        <Border Name="Sound_Button"
+                Cursor="Hand"
+                ToolTip="Toggle sound effects"
+                HorizontalAlignment="Left"
+                Margin="690,14,0,0"
+                VerticalAlignment="Top"
+                Width="25"
+                Height="25"
+                MouseLeftButtonDown="Sound_Button_MouseLeftButtonDown">
+
+            <Path Name="SoundPath"
+                  Stretch="Uniform"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Data="M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13"/>
+        </Border>
+
         <!-- Close button -->
         <Border Name="Close_Button"
                 Background="Transparent"
@@ -1022,7 +1052,7 @@
                 Height="25"
                 MouseLeftButtonDown="Close_Button_MouseLeftButtonDown"
                 OverridesDefaultStyle="True">
-            
+
             <Path Stretch="Uniform"
                   Stroke="White"
                   StrokeThickness="2"
@@ -1041,13 +1071,20 @@
                 Width="25"
                 Height="25"
                 MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown">
-            
+
             <Path Stretch="Uniform"
                   Stroke="White"
                   StrokeThickness="2"
                   StrokeStartLineCap="Round"
                   StrokeEndLineCap="Round"
-                  Data="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14"/>
+                  Data="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14">
+                
+                <Path.RenderTransform>
+                    <RotateTransform x:Name="RefreshRotateTransform"
+                             CenterX="12"
+                             CenterY="12" />
+                </Path.RenderTransform>
+            </Path>
         </Border>
 
         <!-- GitHub button -->
@@ -1062,7 +1099,7 @@
                 Width="25"
                 Height="25"
                 MouseLeftButtonDown="GitHub_Button_MouseLeftButtonDown">
-            
+
             <Path Stretch="Uniform"
                   Stroke="White"
                   StrokeThickness="1.5"

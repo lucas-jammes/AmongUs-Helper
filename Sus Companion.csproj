@@ -34,6 +34,8 @@
     <None Remove="assets\images\misc\github_button.png" />
     <None Remove="assets\images\misc\refresh_button.png" />
     <None Remove="assets\images\misc\refresh_button.svg" />
+    <None Remove="assets\images\misc\tutorial.gif" />
+    <None Remove="assets\sounds\dead.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -101,6 +103,12 @@
     <Resource Include="assets\images\misc\background.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="assets\images\misc\tutorial.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="assets\sounds\dead.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -136,10 +144,10 @@
 	<AssemblyTitle>Sus Companion</AssemblyTitle>
 	<Authors>Lucas Jammes</Authors>
 	<Copyright>Copyright © Lucas Jammes 2025</Copyright>
-	<Version>1.4.0</Version>
-	<FileVersion>1.4.0</FileVersion>
-	<AssemblyVersion>1.4.0</AssemblyVersion>
-	<InformationalVersion>1.4.0</InformationalVersion>
+	<Version>1.5.0</Version>
+	<FileVersion>1.5.0</FileVersion>
+	<AssemblyVersion>1.5.0</AssemblyVersion>
+	<InformationalVersion>1.5.0</InformationalVersion>
 	<Description>Lightweight app to help AmongUs players!</Description>
   </PropertyGroup>
 </Project>

@@ -62,6 +62,6 @@ Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gn
 ---
 
 [release-page]: https://github.com/lucas-jammes/SusCompanion/releases/latest "Latest release"  
-[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.4.0/Sus_Companion.exe "Direct download"  
+[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.5.0/Sus_Companion.exe "Direct download"  
 
 <!-- Maintenance badge generator: https://gist.github.com/taiki-e/ad73eaea17e2e0372efb76ef6b38f17b -->  
