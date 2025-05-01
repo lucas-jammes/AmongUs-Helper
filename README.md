@@ -5,7 +5,7 @@
 
 # Sus Companion
 
-Sus Companion is a **portable desktop app** that helps crewmates track who's sus and who's not!  
+Sus Companion is a **portable desktop app** that helps crewmates track who's sus and who's safe!  
 
 ---
 
@@ -15,7 +15,7 @@ No installation required:
 
 1. [Download the latest version][direct-download]
 2. Launch `Sus Companion.exe`
-3. Ready to start!
+3. You're good to go!
 
 > Or grab it from the [release page][release-page].
 
@@ -36,19 +36,15 @@ No installation required:
 
 ## 📺 Video Tutorial
 
-Here’s a quick demo of Sus Companion in action:   
-
 ![tutorial](./assets/images/misc/tutorial.gif "App in action")
-
-*GIF not appearing ? View [here](./assets/images/misc/tutorial.gif "Link to the GIF file")*
 
 ---
 
 ## 📦 Built With
 
-- WPF (Windows Presentation Foundation)
-- C# (.NET 9.0)
-- XAML UI
+- WPF (Windows Presentation Foundation)  
+- C# (.NET 9.0)  
+- XAML  
 
 ---
 
