@@ -222,7 +222,6 @@ namespace Sus_Companion
         /// </summary>
         private void GitHub_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Open the GitHub page in the default web browser
             _ = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
             {
                 FileName = "https://github.com/lucas-jammes/SusCompanion",
@@ -235,7 +234,6 @@ namespace Sus_Companion
         /// </summary>
         private void Close_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Close the application when the close button is clicked
             Close();
         }
 
@@ -247,13 +245,16 @@ namespace Sus_Companion
             // Toggle the sound on and off
             IsSoundEnabled = !IsSoundEnabled;
 
+            // Update the sound icon path based on the sound state
             if (IsSoundEnabled)
             {
+                // Sound On SVG data
                 SoundPath.Data = Geometry.Parse("M3 11V13 M6 8V16 M9 10V14 M12 7V17 M15 4V20 M18 9V15 M21 11V13");
                 Sound_Button.Opacity = 1.0;
             }
             else
             {
+                // Sound Off SVG data
                 SoundPath.Data = Geometry.Parse("M3 11V13 M6 11V13 M9 11V13 M12 10V14 M15 11V13 M18 11V13 M21 11V13");
                 Sound_Button.Opacity = 0.5;
             }
@@ -403,7 +404,6 @@ namespace Sus_Companion
 
             UpdateStats();
         }
-
 
         #endregion
     }
