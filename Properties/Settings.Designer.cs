@@ -46,5 +46,17 @@ namespace Sus_Companion.Properties {
                 this["WindowLeft"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsSoundEnabled {
+            get {
+                return ((bool)(this["IsSoundEnabled"]));
+            }
+            set {
+                this["IsSoundEnabled"] = value;
+            }
+        }
     }
 }

@@ -20,9 +20,6 @@ namespace Sus_Companion
         public MainWindow()
         {
             InitializeComponent();
-
-            // Update the Stats label located at the bottom of the window
-            UpdateStats();
         }
 
 
@@ -35,6 +32,9 @@ namespace Sus_Companion
         {
             base.OnInitialized(e);
 
+            // Update the Stats label located at the bottom of the window
+            UpdateStats();
+
             // Check if the window position is not default (0,0)
             if (Settings.Default.WindowTop != 0 || Settings.Default.WindowLeft != 0)
             {
@@ -42,6 +42,13 @@ namespace Sus_Companion
                 Top = Settings.Default.WindowTop;
                 Left = Settings.Default.WindowLeft;
             }
+
+            // Enable or disable sound based on saved settings and set the icon accordingly
+            IsSoundEnabled = Properties.Settings.Default.IsSoundEnabled;
+            SoundPath.Data = Geometry.Parse(IsSoundEnabled
+                ? "M3 11V13 M6 8V16 M9 10V14 M12 7V17 M15 4V20 M18 9V15 M21 11V13"
+                : "M3 11V13 M6 11V13 M9 11V13 M12 10V14 M15 11V13 M18 11V13 M21 11V13");
+            Sound_Button.Opacity = IsSoundEnabled ? 1.0 : 0.5;
         }
 
         /// <summary>
@@ -253,6 +260,10 @@ namespace Sus_Companion
                 SoundPath.Data = Geometry.Parse("M3 11V13 M6 11V13 M9 11V13 M12 10V14 M15 11V13 M18 11V13 M21 11V13");
                 Sound_Button.Opacity = 0.5;
             }
+
+            // Save sound settings for future sessions
+            Properties.Settings.Default.IsSoundEnabled = IsSoundEnabled;
+            Properties.Settings.Default.Save();
         }
 
         #endregion
