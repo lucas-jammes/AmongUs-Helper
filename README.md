@@ -1,11 +1,20 @@
-![License](https://img.shields.io/github/license/lucas-jammes/SusCompanion "GPL-3.0 License")
-![Release](https://img.shields.io/github/v/release/lucas-jammes/SusCompanion "Latest release")
-![Maintenance](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg "Level of maintenance")
-![Downloads](https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total "Total downloads")
+<br />
+<p align="center">
+    <img src="assets/images/misc/logo.png" alt="App Icon" width="75" height="75">
+  </a>
 
-# Sus Companion
-
-Sus Companion is a **portable desktop app** that helps crewmates track who's sus and who's safe!  
+  <h1 align="center">Sus Companion</h1>
+  <p align="center">
+    <img src="https://img.shields.io/github/license/lucas-jammes/SusCompanion" title="GPL-3.0 License">
+    <img src="https://img.shields.io/github/v/release/lucas-jammes/SusCompanion" title="Latest release">
+    <img src="https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg" title="Level of maintenance">
+    <img src="https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total" title="Total downloads">
+    </p>
+  <p align="center">
+    Portable and lightweight desktop app that helps crewmates track who's sus and who's safe!
+    <br />
+  </p>
+</p>
 
 ---
 
@@ -63,5 +72,6 @@ Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gn
 
 [release-page]: https://github.com/lucas-jammes/SusCompanion/releases/latest "Latest release"  
 [direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.5.1/Sus_Companion.exe "Direct download"  
+[app-icon]: <img src="assets/images/misc/icon.png" alt="App icon" width="25" height="25">
 
 <!-- Maintenance badge generator: https://gist.github.com/taiki-e/ad73eaea17e2e0372efb76ef6b38f17b -->  
