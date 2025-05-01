@@ -13,104 +13,125 @@
             <ImageBrush ImageSource="/assets/images/misc/background.png"/>
         </Grid.Background>
 
+        <!-- Top bar -->
         <Rectangle x:Name="TopBar" HorizontalAlignment="Center" Height="69" Stroke="#FFFFFF" StrokeThickness="1" VerticalAlignment="Top" Width="824" Fill="Black" Cursor="SizeAll" MouseLeftButtonDown="TopBar_MouseLeftButtonDown" Margin="0,-11,0,0" Opacity="0.9">
             <Rectangle.Effect>
                 <BlurEffect Radius="10"/>
             </Rectangle.Effect>
         </Rectangle>
 
+        <!-- Title -->
         <Label Name="WindowTitle" Content="Sus Companion" HorizontalAlignment="Left" FontSize="32" VerticalAlignment="Top" Height="58" Width="143" Margin="10,0,0,0"/>
 
+        <!-- Red character: #C61111 -->
         <Border BorderBrush="#FFFFFF" Height="100" Width="100" Margin="24,141,676,559" CornerRadius="10">
-            <Image Name="Red" Source="/Assets/Images/Characters/Red.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Red" Source="/Assets/Images/Characters/Red.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Red_Label" Content="Red" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="24,241,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Red_Label" Content="Red" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="32,241,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Blue character: #132ED2 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="154,141,546,559" CornerRadius="10">
-            <Image Name="Blue" Source="/Assets/Images/Characters/Blue.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Blue" Source="/Assets/Images/Characters/Blue.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Blue_Label" Content="Blue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="154,241,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Blue_Label" Content="Blue" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="162,241,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Green character: #11802D -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="284,141,416,559" CornerRadius="10">
-            <Image Name="Green" Source="/Assets/Images/Characters/Green.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Green" Source="/Assets/Images/Characters/Green.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Green_Label" Content="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="284,241,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Green_Label" Content="Green" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="292,241,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Pink character: #EE54BB -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="414,141,286,559" CornerRadius="10">
-            <Image Name="Pink" Source="/Assets/Images/Characters/Pink.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Pink" Source="/Assets/Images/Characters/Pink.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Pink_Label" Content="Pink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="414,241,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Pink_Label" Content="Pink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="422,241,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Orange character: #F07D0D -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="544,141,156,559" CornerRadius="10">
-            <Image Name="Orange" Source="/Assets/Images/Characters/Orange.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Orange" Source="/Assets/Images/Characters/Orange.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Orange_Label" Content="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="544,241,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Orange_Label" Content="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="552,241,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Yellow character: #F6F657 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="674,141,26,559" CornerRadius="10">
-            <Image Name="Yellow" Source="/Assets/Images/Characters/Yellow.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Yellow" Source="/Assets/Images/Characters/Yellow.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Yellow_Label" Content="Yellow" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="674,241,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Yellow_Label" Content="Yellow" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="682,241,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Black character: #3F474E -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="24,350,676,350" CornerRadius="10">
-            <Image Name="Black" Source="/Assets/Images/Characters/Black.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Black" Source="/Assets/Images/Characters/Black.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Black_Label" Content="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="24,450,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Black_Label" Content="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="32,450,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- White character: #D7E1F1 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="154,350,546,350" CornerRadius="10">
-            <Image Name="White" Source="/Assets/Images/Characters/White.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="White" Source="/Assets/Images/Characters/White.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="White_Label" Content="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="154,450,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="White_Label" Content="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="162,450,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Purple character: #6B2FBC -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="284,350,416,350" CornerRadius="10">
-            <Image Name="Purple" Source="/Assets/Images/Characters/Purple.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Purple" Source="/Assets/Images/Characters/Purple.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Purple_Label" Content="Purple" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="284,450,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Purple_Label" Content="Purple" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="292,450,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Brown character: #71491E -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="414,350,286,350" CornerRadius="10">
-            <Image Name="Brown" Source="/Assets/Images/Characters/Brown.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Brown" Source="/Assets/Images/Characters/Brown.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Brown_Label" Content="Brown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="414,450,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Brown_Label" Content="Brown" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="422,450,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Cyan character: #38E2DD -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="544,350,156,350" CornerRadius="10">
-            <Image Name="Cyan" Source="/Assets/Images/Characters/Cyan.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Cyan" Source="/Assets/Images/Characters/Cyan.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Cyan_Label" Content="Cyan" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="544,450,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Cyan_Label" Content="Cyan" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="552,450,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Lime character: #50F039 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="674,350,26,350" CornerRadius="10">
-            <Image Name="Lime" Source="/Assets/Images/Characters/Lime.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Lime" Source="/Assets/Images/Characters/Lime.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Lime_Label" Content="Lime" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="674,450,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Lime_Label" Content="Lime" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="682,450,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Maroon character: #6B2B3C -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="24,559,676,141" CornerRadius="10">
-            <Image Name="Maroon" Source="/Assets/Images/Characters/Maroon.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Maroon" Source="/Assets/Images/Characters/Maroon.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Maroon_Label" Content="Maroon" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="24,659,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Maroon_Label" Content="Maroon" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="32,659,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Rose character: #ECC0D3 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="154,559,546,141" CornerRadius="10">
-            <Image Name="Rose" Source="/Assets/Images/Characters/Rose.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Rose" Source="/Assets/Images/Characters/Rose.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Rose_Label" Content="Rose" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="154,659,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Rose_Label" Content="Rose" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="162,659,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Banana character: #FFFEBE -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="284,559,416,141" CornerRadius="10">
-            <Image Name="Banana" Source="/Assets/Images/Characters/Banana.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Banana" Source="/Assets/Images/Characters/Banana.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Banana_Label" Content="Banana" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="284,659,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Banana_Label" Content="Banana" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="292,659,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Gray character: #708495 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="414,559,286,141" CornerRadius="10">
-            <Image Name="Gray" Source="/Assets/Images/Characters/Gray.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Gray" Source="/Assets/Images/Characters/Gray.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Gray_Label" Content="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="414,659,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Gray_Label" Content="Gray" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="422,659,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Tan character: #928776 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="544,559,156,141" CornerRadius="10">
-            <Image Name="Tan" Source="/Assets/Images/Characters/Tan.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Tan" Source="/Assets/Images/Characters/Tan.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Tan_Label" Content="Tan" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="544,659,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Tan_Label" Content="Tan" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="552,659,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Coral character: #EC7578 -->
         <Border BorderBrush="#EBEBEB" Height="100" Width="100" Margin="674,559,26,141" CornerRadius="10">
-            <Image Name="Coral" Source="/Assets/Images/Characters/Coral.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick"/>
+            <Image Name="Coral" Source="/Assets/Images/Characters/Coral.png" Cursor="Hand" MouseLeftButtonDown="Character_LeftClick" Tag="0" MouseRightButtonDown="Character_RightClick" MouseEnter="MouseEnter_HoverEffect" MouseLeave="MouseLeave_HoverEffect"/>
         </Border>
-        <Label Name="Coral_Label" Content="Coral" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="25" HorizontalAlignment="Left" Margin="674,659,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="Coral_Label" Content="Coral" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" HorizontalAlignment="Left" Margin="682,659,0,0" VerticalAlignment="Top" Width="92"/>
 
+        <!-- Close, refresh and GitHub buttons -->
         <Border Name="Close_Button" Background="Transparent" BorderBrush="{x:Null}" Cursor="Hand" ToolTip="Close" HorizontalAlignment="Left" Margin="760,14,0,0" VerticalAlignment="Top" Width="25" Height="25" MouseLeftButtonDown="Close_Button_MouseLeftButtonDown" OverridesDefaultStyle="True">
             <Path Stretch="Uniform" Stroke="White" StrokeThickness="2" Data="M4 4L20 20M20 4L4 20"/>
         </Border>
