@@ -127,12 +127,19 @@ namespace Sus_Companion
             {
                 // Play the sound for dead character
                 PlaySound("dead.wav");
+
+                // Set the opacity to 0.15 and change the label color to dark gray
                 img.Opacity = isAlive ? 0.15 : 1.0;
                 label.Foreground = isAlive ? Brushes.DarkSlateGray : Brushes.White;
                 label.Content = isAlive ? "DEAD" : label.Name.Replace("_Label", "");
             }
-            // Change opacity, foreground color, and label content based on the alive state
-
+            else
+            {
+                // Change the opacity back to 1.0 and reset the label color and content
+                img.Opacity = 1.0;
+                label.Foreground = Brushes.White;
+                label.Content = label.Name.Replace("_Label", "");
+            }
 
             // Update the Stats label located at the bottom of the window
             UpdateStats();
