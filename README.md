@@ -17,7 +17,7 @@ No installation required:
 2. Launch `Sus Companion.exe`
 3. You're good to go!
 
-> Or grab it from the [release page][release-page].
+> Or grab it from the [release page][release-page]
 
 ---
 
@@ -51,13 +51,13 @@ No installation required:
 ## 🤝 Contributing  
 
 ⭐ Star the repo if you like it!  
-💬 Got feedback? [Open an issue](https://github.com/lucas-jammes/SusCompanion/issues).  
+💬 Got feedback? [Open an issue](https://github.com/lucas-jammes/SusCompanion/issues)  
 
 ---
 
 ## 📜 License
 
-Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gnu.org/licenses/gpl-3.0.en.html).
+Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 ---
 
