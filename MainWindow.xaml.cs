@@ -22,8 +22,11 @@ namespace Sus_Companion
             UpdateStats();
         }
 
+
+        #region Window lifecycle methods
+
         /// <summary>
-        /// Methods concerning the window properties and settings
+        /// Sets the window position based on saved settings.
         /// </summary>
         protected override void OnInitialized(EventArgs e)
         {
@@ -38,6 +41,9 @@ namespace Sus_Companion
             }
         }
 
+        /// <summary>
+        /// Sets the window position before closing.
+        /// </summary>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             // Save the window position before closing
@@ -47,8 +53,12 @@ namespace Sus_Companion
             base.OnClosing(e);
         }
 
+        #endregion
+
+        #region Character interaction methods
+
         /// <summary>
-        /// Methods concerning the characters
+        /// Handles a left click on a character to cycle its state between SAFE, SUS, and ALIVE (the character's name).
         /// </summary>
         private void Character_LeftClick(object sender, MouseButtonEventArgs e)
         {
@@ -88,6 +98,11 @@ namespace Sus_Companion
             UpdateStats();
         }
 
+        /// <summary>
+        /// Resets the visual state of a character image and its associated label.
+        /// </summary>
+        /// <param name="img">The character image control</param>
+        /// <param name="label">The label control associated with the character</param>
         private void ResetCharacterState(Image img, Label label)
         {
             // Reset the character state to default values
@@ -97,7 +112,9 @@ namespace Sus_Companion
             label.Content = label.Name.Replace("_Label", "");
         }
 
-
+        /// <summary>
+        /// Handles a right click on a character to toggle its DEAD/ALIVE (character's name) state.
+        /// </summary>
         private void Character_RightClick(object sender, MouseButtonEventArgs e)
         {
             // Check if the sender is an Image and if its Label exists
@@ -125,8 +142,12 @@ namespace Sus_Companion
             UpdateStats();
         }
 
+        #endregion
+
+        #region TopBar and button interaction methods
+
         /// <summary>
-        /// Methods concerning TopBar content, including buttons
+        /// Handles a left click on the refresh button. Starts animation and triggers refresh logic.
         /// </summary>
         private async void Refresh_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -164,10 +185,12 @@ namespace Sus_Companion
             Refresh_Button.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Starts a single 360-degree rotation animation on the refresh icon
+        /// </summary>
         private void Refresh_Button_Animation()
         {
-            // Rotate the refresh button 360 degrees when clicked
-            DoubleAnimation rotationAnimation = new()
+           DoubleAnimation rotationAnimation = new()
             {
                 From = 0,
                 To = 360,
@@ -178,12 +201,17 @@ namespace Sus_Companion
             RefreshRotateTransform.BeginAnimation(RotateTransform.AngleProperty, rotationAnimation);
         }
 
+        /// <summary>
+        /// Handles a mouse click on the top bar to allow window dragging.
+        /// </summary>
         private void TopBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Allow the window to be dragged when the top bar is clicked
             DragMove();
         }
 
+        /// <summary>
+        /// Opens the GitHub repository in the default web browser.
+        /// </summary>
         private void GitHub_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Open the GitHub page in the default web browser
@@ -194,12 +222,18 @@ namespace Sus_Companion
             });
         }
 
+        /// <summary>
+        /// Closes the application window.
+        /// </summary>
         private void Close_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Close the application when the close button is clicked
             Close();
         }
 
+        /// <summary>
+        /// Toggles sound on or off and updates the sound icon path.
+        /// </summary>
         private void Sound_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             // Toggle the sound on and off
@@ -217,8 +251,12 @@ namespace Sus_Companion
             }
         }
 
+        #endregion
+
+        #region Utility methods
+
         /// <summary>
-        /// Miscellaneous methods
+        /// Updates the Stats label with counts of ALIVE, SAFE, SUS, and DEAD characters.
         /// </summary>
         private void UpdateStats()
         {
@@ -272,6 +310,11 @@ namespace Sus_Companion
             Stats.Content = span;
         }
 
+        /// <summary>
+        /// Plays a sound file at the specified volume if sound is enabled.
+        /// </summary>
+        /// <param name="soundFile">The file path to the sound file</param>
+        /// <param name="volume">The volume level (0.0 to 1.0)</param>
         private void PlaySound(string soundFile, double volume)
         {
             // Skip if sound is disabled
@@ -292,5 +335,7 @@ namespace Sus_Companion
                 player.MediaEnded += (s, e) => player.Close();
             }
         }
+
+        #endregion
     }
 }
