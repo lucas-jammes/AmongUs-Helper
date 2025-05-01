@@ -101,19 +101,6 @@ namespace Sus_Companion
             UpdateStats();
         }
 
-        /// <summary>
-        /// Resets the visual state of a character image and its associated label.
-        /// </summary>
-        /// <param name="img">The character image control</param>
-        /// <param name="label">The label control associated with the character</param>
-        private void ResetCharacterState(Image img, Label label)
-        {
-            // Reset the character state to default values
-            img.Opacity = 1.0;
-            img.Tag = 0;
-            label.Foreground = Brushes.White;
-            label.Content = label.Name.Replace("_Label", "");
-        }
 
         /// <summary>
         /// Handles a right click on a character to toggle its DEAD/ALIVE (character's name) state.
@@ -143,6 +130,20 @@ namespace Sus_Companion
 
             // Update the Stats label located at the bottom of the window
             UpdateStats();
+        }
+
+        /// <summary>
+        /// Resets the visual state of a character image and its associated label.
+        /// </summary>
+        /// <param name="img">The character image control</param>
+        /// <param name="label">The label control associated with the character</param>
+        private void ResetCharacterState(Image img, Label label)
+        {
+            // Reset the character state to default values
+            img.Opacity = 1.0;
+            img.Tag = 0;
+            label.Foreground = Brushes.White;
+            label.Content = label.Name.Replace("_Label", "");
         }
 
         #endregion
@@ -318,8 +319,14 @@ namespace Sus_Companion
         /// </summary>
         /// <param name="soundFile">The file path to the sound file</param>
         /// <param name="volume">The volume level (0.0 to 1.0)</param>
-        private void PlaySound(string resourceName, double volume = 1.0)
+        private void PlaySound(string resourceName, double volume = 0.2)
         {
+            // Skip if sound is not enabled
+            if (!IsSoundEnabled)
+            {
+                return;
+            }
+
             string resourcePath = $"Sus_Companion.assets.sounds.{resourceName}"; // adapte ton namespace
 
             using var stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
