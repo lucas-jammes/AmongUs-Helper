@@ -22,7 +22,6 @@ namespace Sus_Companion
             InitializeComponent();
         }
 
-
         #region Window lifecycle methods
 
         /// <summary>
