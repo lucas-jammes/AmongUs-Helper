@@ -36,7 +36,7 @@ No installation required!
 
 ## 📺 Video Tutorial
 
-![tutorial](./assets/images/misc/tutorial.gif "GIF image showing how app works")
+![tutorial](./assets/images/misc/tutorial.gif "GIF image showing how app works")  
 
 ---
 
