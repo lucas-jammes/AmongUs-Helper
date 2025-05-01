@@ -17,7 +17,7 @@ No installation required:
 2. Launch `Sus Companion.exe`
 3. You're good to go!
 
-> Or grab it from the [release page][release-page]
+> You can also grab it from the [release page][release-page]
 
 ---
 
