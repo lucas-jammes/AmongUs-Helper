@@ -1,4 +1,4 @@
-![License](https://img.shields.io/github/license/lucas-jammes/SusCompanion)
+![Maintenance](https://img.shields.io/maintenance/yes/2025)
 ![Release](https://img.shields.io/github/v/release/lucas-jammes/SusCompanion)
 ![Downloads](https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total)
 
