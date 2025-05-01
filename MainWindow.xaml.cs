@@ -15,7 +15,7 @@ namespace Sus_Companion
         private bool IsSoundEnabled = true;
 
         // List to keep track of active MediaPlayer instances
-        private readonly List<MediaPlayer> _activePlayers = new();
+        private readonly List<MediaPlayer> _activePlayers = [];
 
         public MainWindow()
         {
@@ -107,7 +107,6 @@ namespace Sus_Companion
             // Update the Stats label located at the bottom of the window
             UpdateStats();
         }
-
 
         /// <summary>
         /// Handles a right click on a character to toggle its DEAD/ALIVE (character's name) state.
@@ -201,7 +200,7 @@ namespace Sus_Companion
         /// </summary>
         private void Refresh_Button_Animation()
         {
-           DoubleAnimation rotationAnimation = new()
+            DoubleAnimation rotationAnimation = new()
             {
                 From = 0,
                 To = 360,
@@ -338,32 +337,35 @@ namespace Sus_Companion
                 return;
             }
 
-            string resourcePath = $"Sus_Companion.assets.sounds.{resourceName}"; // adapte ton namespace
+            string resourcePath = $"Sus_Companion.assets.sounds.{resourceName}";
 
-            using var stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
+            // Check if the resource exists in the assembly
+            using Stream? stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
             if (stream == null)
             {
-                MessageBox.Show($"Resource {resourcePath} not found.");
+                _ = MessageBox.Show($"Resource {resourcePath} not found.");
                 return;
             }
 
-            // Créer un fichier temporaire avec extension .wav
+            // Creates a temporary file to store the sound
             string tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.wav");
-            using (var fileStream = File.Create(tempFile))
+            using (FileStream fileStream = File.Create(tempFile))
             {
                 stream.CopyTo(fileStream);
             }
 
-            var player = new MediaPlayer();
+            // Create a new MediaPlayer instance and play the sound
+            MediaPlayer player = new();
             player.Open(new Uri(tempFile, UriKind.Absolute));
             player.Volume = volume;
             player.Play();
 
+            // Add the player to the active players list
             _activePlayers.Add(player);
             player.MediaEnded += (s, e) =>
             {
                 player.Close();
-                _activePlayers.Remove(player);
+                _ = _activePlayers.Remove(player);
 
                 try { File.Delete(tempFile); } catch { /* ignore delete failure */ }
             };
