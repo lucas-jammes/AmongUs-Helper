@@ -56,7 +56,6 @@ namespace Sus_Companion
         /// </summary>
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
-            // Save the window position before closing
             Settings.Default.WindowTop = Top;
             Settings.Default.WindowLeft = Left;
             Settings.Default.Save();
@@ -76,7 +75,7 @@ namespace Sus_Companion
             if (sender is not Image img) return;
             if (FindName($"{img.Name}_Label") is not Label label) return;
 
-            // If the character is dead (opacity < 1.0), set it to ALIVE state
+            // If the character is dead, set it to ALIVE state
             if (img.Opacity < 1.0)
             {
                 img.Opacity = 1.0;
@@ -121,7 +120,7 @@ namespace Sus_Companion
             if (sender is not Image img) return;
             if (FindName($"{img.Name}_Label") is not Label label) return;
 
-            // Check if the character is dead (opacity < 1.0)
+            // Check if the character is dead
             bool isDead = img.Opacity < 1.0;
 
             if (isDead)
@@ -160,14 +159,14 @@ namespace Sus_Companion
             {
                 switch (element)
                 {
-                    // Reset the state of Labels
+                    // Reset character Labels to their original state
                     case Label label when label.Name is not "WindowTitle" and not "Stats":
                         label.Foreground = Brushes.White;
                         label.Content = label.Name.Replace("_Label", "");
                         break;
 
+                    // Reset the Stats Label
                     case Label label when label.Name == "Stats":
-                        // Reset the Stats label
                         UpdateStats();
                         break;
 
