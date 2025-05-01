@@ -57,7 +57,7 @@ No installation required:
 
 ## 📜 License
 
-Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gnu.org/licenses/gpl-3.0.en.html).
+Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 ---
 
