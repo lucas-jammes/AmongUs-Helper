@@ -1,71 +1,71 @@
-![Maintenance](https://img.shields.io/maintenance/yes/2025)
-![Release](https://img.shields.io/github/v/release/lucas-jammes/SusCompanion)
-![Downloads](https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total)
-
+![License](https://img.shields.io/github/license/lucas-jammes/SusCompanion "GPL-3.0 License")
+![Release](https://img.shields.io/github/v/release/lucas-jammes/SusCompanion "Latest release")
+![Maintenance](https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg "Level of maintenance")
+![Downloads](https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total "Total downloads")
 
 # Sus Companion
 
-Sus Companion is a **portable desktop app** designed to help crewmates track who is sus and who isn't!
+Sus Companion is a **portable desktop app** that helps crewmates track who's sus and who's not!  
 
 ---
 
 ## 📥 Download
 
-No installation required!
+No installation required:
 
-1. Download the latest version [here][direct-download].
-2. Launch `Sus Companion.exe`.
-3. Enjoy!
+1. [Download the latest version][direct-download]
+2. Launch `Sus Companion.exe`
+3. Ready to start!
 
-> Alternatively, you can download it from the [release page][release-page].
+> Or grab it from the [release page][release-page].
 
 ---
 
-## 🎮 How to Use  
+## 🎮 How to Use
 
-- 🖱 **Left-click** on any crewmate to cycle between:  
-  - ![008000](https://place-hold.it/10/32CD32/32CD32 "LimeGreen") → **Safe**  
-  - ![FF0000](https://place-hold.it/10/FF0000/FF0000 "Red") → **Sus**  
-  - ![808080](https://place-hold.it/10/FFFFFF/FFFFFF "White") → **Unknown**
-- 🖱 **Right-click** on any crewmate to cycle between: 
-  - ![808080](https://place-hold.it/10/2F4F4F/2F4F4F "DarkSlateGray") → **Dead** 
-  - ![808080](https://place-hold.it/10/FFFFFF/FFFFFF "White") → **Alive** 
-- ↻ **Press the Refresh button** (top right) to reset all states at once.  
+- 🖱 **Left-click** a crewmate to cycle:
+  - ![LimeGreen](https://place-hold.it/10/32CD32/32CD32) → **Safe**
+  - ![Red](https://place-hold.it/10/FF0000/FF0000) → **Sus**
+  - ![White](https://place-hold.it/10/FFFFFF/FFFFFF) → **Unknown**
+- 🖱 **Right-click** a crewmate to toggle between:  
+  - ![DarkSlateGray](https://place-hold.it/10/2F4F4F/2F4F4F) → **Dead**
+  - ![White](https://place-hold.it/10/FFFFFF/FFFFFF) → **Alive**
+- ↻ **Click the Refresh button** (top right) to reset all states.
 
 ---
 
 ## 📺 Video Tutorial
 
-![tutorial](./assets/images/misc/tutorial.gif "GIF image showing how app works")  
+Here’s a quick demo of Sus Companion in action:   
+
+![tutorial](./assets/images/misc/tutorial.gif "App in action")
+
+*GIF not appearing ? View [here](./assets/images/misc/tutorial.gif "Link to the GIF file")*
 
 ---
 
-## 📦 Technology Stack  
+## 📦 Built With
 
-- WPF (Windows Presentation Foundation)  
-- C# (.NET 9.0)  
-- XAML for UI design  
+- WPF (Windows Presentation Foundation)
+- C# (.NET 9.0)
+- XAML UI
 
 ---
 
-## 🤝 Contributing
+## 🤝 Contributing  
 
-Feel free to open issues, suggest improvements, or submit pull requests!  
+⭐ Star the repo if you like it!  
+💬 Got feedback? [Open an issue](https://github.com/lucas-jammes/SusCompanion/issues).  
 
 ---
 
 ## 📜 License
 
-MIT License, free to use and modify.  
+Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
 ---
 
-## 💬 Contact
+[release-page]: https://github.com/lucas-jammes/SusCompanion/releases/latest "Latest release"  
+[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.4.0/Sus_Companion.exe "Direct download"  
 
-If you like the project, star ⭐ the repository!  
-For suggestions or issues, open a ticket!
-
----
-
-[release-page]:https://github.com/lucas-jammes/SusCompanion/releases/latest "Latest release"
-[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.4.0/Sus_Companion.exe "Direct download"
+<!-- Maintenance badge generator: https://gist.github.com/taiki-e/ad73eaea17e2e0372efb76ef6b38f17b -->  
