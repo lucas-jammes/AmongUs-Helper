@@ -133,6 +133,7 @@ namespace Sus_Companion
                 label.Foreground = isAlive ? Brushes.DarkSlateGray : Brushes.White;
                 label.Content = isAlive ? "DEAD" : label.Name.Replace("_Label", "");
             }
+
             else
             {
                 // Change the opacity back to 1.0 and reset the label color and content
