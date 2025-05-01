@@ -1013,7 +1013,7 @@
         <!-- Stats Label -->
         <Label Name ="Stats"
                FontSize="28"
-               Content="STATS"
+               Content="18 ALIVE   -   0 SAFE   -   0 SUS   -   0 DEAD"
                HorizontalAlignment="Left"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
@@ -1023,6 +1023,8 @@
 
         <!-- Sound control -->
         <Border Name="Sound_Button"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
                 Cursor="Hand"
                 ToolTip="Toggle sound effects"
                 HorizontalAlignment="Left"
