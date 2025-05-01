@@ -1028,10 +1028,10 @@
                 Cursor="Hand"
                 ToolTip="Toggle sound effects"
                 HorizontalAlignment="Left"
-                Margin="690,14,0,0"
+                Margin="700,14,0,0"
                 VerticalAlignment="Top"
-                Width="25"
-                Height="25"
+                Width="24"
+                Height="24"
                 MouseLeftButtonDown="Sound_Button_MouseLeftButtonDown">
 
             <Path Name="SoundPath"
@@ -1048,17 +1048,17 @@
                 Cursor="Hand"
                 ToolTip="Close"
                 HorizontalAlignment="Left"
-                Margin="760,14,0,0"
+                Margin="762,16,0,0"
                 VerticalAlignment="Top"
-                Width="25"
-                Height="25"
+                Width="20"
+                Height="20"
                 MouseLeftButtonDown="Close_Button_MouseLeftButtonDown"
                 OverridesDefaultStyle="True">
 
             <Path Stretch="Uniform"
                   Stroke="White"
                   StrokeThickness="2"
-                  Data="M4 4L20 20M20 4L4 20"/>
+                  Data="M4 4L20 20M20 4L4 20" HorizontalAlignment="Right" Width="20"/>
         </Border>
 
         <!-- Refresh button -->
@@ -1068,10 +1068,10 @@
                 Cursor="Hand"
                 ToolTip="Refresh"
                 HorizontalAlignment="Left"
-                Margin="725,14,0,0"
+                Margin="732,16,0,0"
                 VerticalAlignment="Top"
-                Width="25"
-                Height="25"
+                Width="20"
+                Height="20"
                 MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown">
 
             <Path Stretch="Uniform"
@@ -1079,12 +1079,14 @@
                   StrokeThickness="2"
                   StrokeStartLineCap="Round"
                   StrokeEndLineCap="Round"
+                  HorizontalAlignment="Left"
+                  Width="20"
                   Data="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14">
-                
+
                 <Path.RenderTransform>
                     <RotateTransform x:Name="RefreshRotateTransform"
-                             CenterX="12"
-                             CenterY="12" />
+                             CenterX="10"
+                             CenterY="10" />
                 </Path.RenderTransform>
             </Path>
         </Border>
