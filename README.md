@@ -1,18 +1,19 @@
-<br />
 <p align="center">
-    <img src="assets/images/misc/logo.png" alt="App Icon" width="75" height="75">
+  <a href="https://github.com/lucas-jammes/SusCompanion">
+    <img src="assets/images/misc/logo.png" alt="Sus Companion Logo" width="75" height="75">
   </a>
 
   <h1 align="center">Sus Companion</h1>
+
   <p align="center">
     <img src="https://img.shields.io/github/license/lucas-jammes/SusCompanion" title="GPL-3.0 License">
     <img src="https://img.shields.io/github/v/release/lucas-jammes/SusCompanion" title="Latest release">
     <img src="https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg" title="Level of maintenance">
     <img src="https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total" title="Total downloads">
-    </p>
+  </p>
+
   <p align="center">
-    Portable and lightweight desktop app that helps crewmates track who's sus and who's safe!
-    <br />
+    Portable and lightweight desktop app that helps crewmates track who's sus and who's safe.
   </p>
 </p>
 
@@ -45,7 +46,7 @@ No installation required:
 
 ## 📺 Video Tutorial
 
-![tutorial](./assets/images/misc/tutorial.gif "App in action")
+![Application Tutorial](./assets/images/misc/tutorial.gif "App in action")
 
 ---
 
