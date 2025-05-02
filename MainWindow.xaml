@@ -1012,12 +1012,13 @@
 
         <!-- Stats Label -->
         <Label Name ="Stats"
-               FontSize="28"
+               FontSize="32"
                Content="18 ALIVE   -   0 SAFE   -   0 SUS   -   0 DEAD"
+               Background="#BF000000"
                HorizontalAlignment="Left"
                VerticalContentAlignment="Center"
                HorizontalContentAlignment="Center"
-               Margin="162,745,0,0"
+               Margin="162,750,0,0"
                VerticalAlignment="Top"
                Width="482"/>
 
@@ -1098,10 +1099,10 @@
                 Cursor="Hand"
                 ToolTip="GitHub project!"
                 HorizontalAlignment="Left"
-                Margin="760,765,0,0"
+                Margin="760,762,0,0"
                 VerticalAlignment="Top"
-                Width="25"
-                Height="25"
+                Width="24"
+                Height="26"
                 MouseLeftButtonDown="GitHub_Button_MouseLeftButtonDown">
 
             <Path Stretch="Uniform"

@@ -154,10 +154,10 @@
 	<AssemblyTitle>Sus Companion</AssemblyTitle>
 	<Authors>Lucas Jammes</Authors>
 	<Copyright>Copyright © Lucas Jammes 2025</Copyright>
-	<Version>1.5.1</Version>
-	<FileVersion>1.5.1</FileVersion>
-	<AssemblyVersion>1.5.1</AssemblyVersion>
-	<InformationalVersion>1.5.1</InformationalVersion>
+	<Version>1.6.0</Version>
+	<FileVersion>1.6.0</FileVersion>
+	<AssemblyVersion>1.6.0</AssemblyVersion>
+	<InformationalVersion>1.6.0</InformationalVersion>
 	<Description>Portable app to help AmongUs players!</Description>
   </PropertyGroup>
 </Project>
