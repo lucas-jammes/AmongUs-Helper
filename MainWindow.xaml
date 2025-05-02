@@ -91,9 +91,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="32,241,0,0"
+               Margin="24,241,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Blue character: #132ED2 -->
         <Border Height="100"
@@ -145,9 +145,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="162,241,0,0"
+               Margin="154,241,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Green character: #11802D -->
         <Border Height="100"
@@ -199,9 +199,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="292,241,0,0"
+               Margin="284,241,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Pink character: #EE54BB -->
         <Border Height="100"
@@ -253,9 +253,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="422,241,0,0"
+               Margin="414,241,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Orange character: #F07D0D -->
         <Border Height="100"
@@ -307,9 +307,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="552,241,0,0"
+               Margin="544,241,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Yellow character: #F6F657 -->
         <Border Height="100"
@@ -361,9 +361,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="682,241,0,0"
+               Margin="674,241,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Black character: #3F474E -->
         <Border Height="100"
@@ -414,9 +414,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="32,450,0,0"
+               Margin="24,450,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- White character: #D7E1F1 -->
         <Border Height="100"
@@ -468,9 +468,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="162,450,0,0"
+               Margin="154,450,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Purple character: #6B2FBC -->
         <Border Height="100"
@@ -522,9 +522,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="292,450,0,0"
+               Margin="284,450,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Brown character: #71491E -->
         <Border Height="100"
@@ -576,9 +576,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="422,450,0,0"
+               Margin="414,450,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Cyan character: #38E2DD -->
         <Border Height="100"
@@ -630,9 +630,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="552,450,0,0"
+               Margin="544,450,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Lime character: #50F039 -->
         <Border Height="100" Width="100" Margin="674,350,26,350">
@@ -681,9 +681,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="682,450,0,0"
+               Margin="674,450,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Maroon character: #6B2B3C -->
         <Border Height="100"
@@ -735,9 +735,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="32,659,0,0"
+               Margin="24,659,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Rose character: #ECC0D3 -->
         <Border Height="100"
@@ -789,9 +789,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="162,659,0,0"
+               Margin="154,659,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Banana character: #FFFEBE -->
         <Border Height="100"
@@ -843,9 +843,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="292,659,0,0"
+               Margin="284,659,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Gray character: #708495 -->
         <Border Height="100"
@@ -897,9 +897,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="422,659,0,0"
+               Margin="414,659,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Tan character: #928776 -->
         <Border Height="100"
@@ -951,9 +951,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="552,659,0,0"
+               Margin="544,659,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
         <!-- Coral character: #EC7578 -->
         <Border Height="100"
@@ -1005,9 +1005,9 @@
                VerticalContentAlignment="Center"
                FontSize="28"
                HorizontalAlignment="Left"
-               Margin="682,659,0,0"
+               Margin="674,659,0,0"
                VerticalAlignment="Top"
-               Width="92"/>
+               Width="100"/>
 
 
         <!-- Stats Label -->
