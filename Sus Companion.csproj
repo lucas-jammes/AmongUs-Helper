@@ -150,8 +150,8 @@
   <!-- Handle AssemblyInfo -->
   <PropertyGroup>
 	<Company>Lucas Jammes</Company>
-	<Product>Sus Companion</Product>
-	<AssemblyTitle>Sus Companion</AssemblyTitle>
+	<Product>Sus_Companion</Product>
+	<AssemblyTitle>Sus_Companion</AssemblyTitle>
 	<Authors>Lucas Jammes</Authors>
 	<Copyright>Copyright © Lucas Jammes 2025</Copyright>
 	<Version>1.6.0</Version>
