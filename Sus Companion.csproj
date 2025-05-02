@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <None Remove="assets\images\characters\Banana.png" />
+    <None Remove="assets\images\characters\BananaBG.png" />
+    <None Remove="assets\images\characters\BananaPR.png" />
     <None Remove="assets\images\characters\Black.png" />
     <None Remove="assets\images\characters\Blue.png" />
     <None Remove="assets\images\characters\Brown.png" />
