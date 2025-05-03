@@ -12,7 +12,7 @@ namespace Sus_Companion
     public partial class MainWindow : Window
     {
         // Enable sound by default
-        private bool IsSoundEnabled = true;
+         private bool IsSoundEnabled = true;
 
         // List to keep track of active MediaPlayer instances
         private readonly List<MediaPlayer> _activePlayers = [];
@@ -132,8 +132,8 @@ namespace Sus_Companion
             }
             else
             {
-                // Play the kill sound effect
-                PlaySound("dead.wav");
+                // Play the kill sound effect at 20% volume
+                PlaySound("dead.wav", 0.2);
 
                 // Set character to DEAD state
                 img.Opacity = 0.15;
@@ -182,6 +182,9 @@ namespace Sus_Companion
             // Start the reset and the refresh icon animations
             RefreshButtonAnimation();
             ResetCharactersAnimation();
+
+            // Play the refresh sound effect at 30% volume
+            PlaySound("refresh.wav", 0.3);
 
             // Delay according to the animation duration
             await Task.Delay(500);
@@ -326,47 +329,36 @@ namespace Sus_Companion
         /// </summary>
         /// <param name="soundFile">The file path to the sound file</param>
         /// <param name="volume">The volume level (0.0 to 1.0)</param>
-        private void PlaySound(string resourceName, double volume = 0.2)
+        private void PlaySound(string resourceName, double volume = 1.0)
         {
-            // Skip if sound is not enabled
-            if (!IsSoundEnabled)
-            {
-                return;
-            }
+            if (!IsSoundEnabled) return;
 
-            string resourcePath = $"Sus_Companion.assets.sounds.{resourceName}";
+            string resourcePath = "Sus_Companion.assets.sounds." + resourceName;
+            using var stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
 
-            // Check if the resource exists in the assembly
-            using Stream? stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
             if (stream == null)
             {
-                _ = MessageBox.Show($"Resource {resourcePath} not found.");
+                MessageBox.Show($"Resource {resourcePath} not found.");
                 return;
             }
 
-            // Creates a temporary file to store the sound
             string tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.wav");
-            using (FileStream fileStream = File.Create(tempFile))
+            using (var fileStream = File.Create(tempFile))
             {
                 stream.CopyTo(fileStream);
             }
 
-            // Create a new MediaPlayer instance and play the sound
-            MediaPlayer player = new();
+            var player = new MediaPlayer();
             player.Open(new Uri(tempFile, UriKind.Absolute));
             player.Volume = volume;
             player.Play();
-
-            // Add the player to the active players list
-            _activePlayers.Add(player);
             player.MediaEnded += (s, e) =>
             {
                 player.Close();
-                _ = _activePlayers.Remove(player);
-
-                try { File.Delete(tempFile); } catch { /* ignore delete failure */ }
+                try { File.Delete(tempFile); } catch { }
             };
         }
+
 
         /// <summary>
         ///  Resets the animation of all characters to their initial state.

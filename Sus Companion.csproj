@@ -38,18 +38,14 @@
     <None Remove="assets\images\misc\refresh_button.svg" />
     <None Remove="assets\images\misc\tutorial.gif" />
     <None Remove="assets\sounds\dead.wav" />
+    <None Remove="assets\sounds\refresh.wav" />
   </ItemGroup>
-
-	<!-- Include the sound files when publishing -->
-	<ItemGroup>
-		<Content Include="assets\sounds\dead.wav">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</Content>
-	</ItemGroup>
 	
   <ItemGroup>
     <Content Include="assets\images\misc\icon.ico" />
+    <EmbeddedResource Include="assets\sounds\refresh.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
