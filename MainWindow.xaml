@@ -5,1110 +5,1132 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sus_Companion"
         mc:Ignorable="d"
-        Title="Sus Companion" Height="800" Width="800"
-        ResizeMode="NoResize" WindowStyle="None">
+        Title="Sus Companion"
+        Width="820"
+        Height="820"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent">
 
-    <Grid x:Name="MainGrid">
-        <Grid.Background>
-            <ImageBrush ImageSource="/assets/images/misc/background.png"/>
-        </Grid.Background>
+    <Border Background="Black"
+            Width="800"
+            Height="800"
+            Margin="0,0,15,15"
+            CornerRadius="8">
 
-        <!-- Top bar -->
-        <Rectangle x:Name="TopBar"
-                   HorizontalAlignment="Center"
-                   Height="69"
-                   Stroke="#FFFFFF"
-                   StrokeThickness="1"
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20"
+                              ShadowDepth="4"
+                              Color="#66000000"
+                              Direction="315"/>
+        </Border.Effect>
+
+        <Grid x:Name="MainGrid">
+            <Grid.Clip>
+                <RectangleGeometry RadiusX="15" RadiusY="15" Rect="0,0,800,800"/>
+            </Grid.Clip>
+            
+            <Grid.Background>
+                <ImageBrush ImageSource="/assets/images/misc/background.png"/>
+            </Grid.Background>
+
+            <!-- Top bar -->
+            <Rectangle x:Name="TopBar"
+                       HorizontalAlignment="Center"
+                       Height="69"
+                       Stroke="#FFFFFF"
+                       StrokeThickness="1"
+                       VerticalAlignment="Top"
+                       Width="824"
+                       Fill="Black"
+                       Cursor="SizeAll"
+                       MouseLeftButtonDown="TopBar_MouseLeftButtonDown"
+                       Margin="0,-11,0,0"
+                       Opacity="0.9">
+                <Rectangle.Effect>
+                    <BlurEffect Radius="10"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <!-- Title -->
+            <Label Name="WindowTitle"
+                   Content="Sus Companion"
+                   HorizontalAlignment="Left"
+                   FontSize="32"
                    VerticalAlignment="Top"
-                   Width="824"
-                   Fill="Black"
-                   Cursor="SizeAll"
-                   MouseLeftButtonDown="TopBar_MouseLeftButtonDown"
-                   Margin="0,-11,0,0"
-                   Opacity="0.9">
-            <Rectangle.Effect>
-                <BlurEffect Radius="10"/>
-            </Rectangle.Effect>
-        </Rectangle>
-
-        <!-- Title -->
-        <Label Name="WindowTitle"
-               Content="Sus Companion"
-               HorizontalAlignment="Left"
-               FontSize="32"
-               VerticalAlignment="Top"
-               Height="58"
-               Width="143"
-               Margin="10,0,0,0"/>
-
-        <!-- Red character: #C61111 -->
-        <Border Height="100"
-                Width="100"
-                Margin="24,141,676,559">
-
-            <Image Name="Red"
-                   Source="/Assets/Images/Characters/Red.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="RedScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="RedShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="Color" To="#C61111" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Red_Label"
-               Content="Red"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="34,241,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Blue character: #132ED2 -->
-        <Border Height="100"
-                Width="100"
-                Margin="154,141,546,559">
-
-            <Image Name="Blue"
-                   Source="/Assets/Images/Characters/Blue.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="BlueScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="BlueShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="Color" To="#132ED2" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Blue_Label"
-               Content="Blue"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="164,241,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Green character: #11802D -->
-        <Border Height="100"
-                Width="100"
-                Margin="284,141,416,559">
-
-            <Image Name="Green"
-                   Source="/Assets/Images/Characters/Green.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="GreenScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="GreenShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="Color" To="#11802D" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Green_Label"
-               Content="Green"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="294,241,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Pink character: #EE54BB -->
-        <Border Height="100"
-                Width="100"
-                Margin="414,141,286,559">
-
-            <Image Name="Pink"
-                   Source="/Assets/Images/Characters/Pink.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="PinkScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="PinkShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="Color" To="#EE54BB" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Pink_Label"
-               Content="Pink"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="424,241,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Orange character: #F07D0D -->
-        <Border Height="100"
-                Width="100"
-                Margin="544,141,156,559">
-
-            <Image Name="Orange"
-                   Source="/Assets/Images/Characters/Orange.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="OrangeScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="OrangeShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="Color" To="#F07D0D" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Orange_Label"
-               Content="Orange"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="554,241,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Yellow character: #F6F657 -->
-        <Border Height="100"
-                Width="100"
-                Margin="674,141,26,559">
-
-            <Image Name="Yellow"
-                   Source="/Assets/Images/Characters/Yellow.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="YellowScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="YellowShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="Color" To="#F6F657" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Yellow_Label"
-               Content="Yellow"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="684,241,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Black character: #3F474E -->
-        <Border Height="100"
-                Width="100"
-                Margin="24,350,676,350">
-
-            <Image Name="Black"
-                   Source="/Assets/Images/Characters/Black.png"
-                   Cursor="Hand" RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="BlackScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="BlackShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="Color" To="#3F474E" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Black_Label"
-               Content="Black"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="34,450,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- White character: #D7E1F1 -->
-        <Border Height="100"
-                Width="100"
-                Margin="154,350,546,350">
-
-            <Image Name="White"
-                   Source="/Assets/Images/Characters/White.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="WhiteScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="WhiteShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="Color" To="#D7E1F1" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="White_Label"
-               Content="White"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="164,450,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Purple character: #6B2FBC -->
-        <Border Height="100"
-                Width="100"
-                Margin="284,350,416,350">
-
-            <Image Name="Purple"
-                   Source="/Assets/Images/Characters/Purple.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="PurpleScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="PurpleShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="Color" To="#6B2FBC" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Purple_Label"
-               Content="Purple"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="294,450,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Brown character: #71491E -->
-        <Border Height="100"
-                Width="100"
-                Margin="414,350,286,350">
-
-            <Image Name="Brown"
-                   Source="/Assets/Images/Characters/Brown.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="BrownScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="BrownShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="Color" To="#71491E" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Brown_Label"
-               Content="Brown"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="424,450,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Cyan character: #38E2DD -->
-        <Border Height="100"
-                Width="100"
-                Margin="544,350,156,350">
-
-            <Image Name="Cyan"
-                   Source="/Assets/Images/Characters/Cyan.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="CyanScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="CyanShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="Color" To="#38E2DD" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Cyan_Label"
-               Content="Cyan"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="554,450,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Lime character: #50F039 -->
-        <Border Height="100" Width="100" Margin="674,350,26,350">
-            <Image Name="Lime"
-                   Source="/Assets/Images/Characters/Lime.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="LimeScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="LimeShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="Color" To="#50F039" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Lime_Label"
-               Content="Lime"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="684,450,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Maroon character: #6B2B3C -->
-        <Border Height="100"
-                Width="100"
-                Margin="24,559,676,141">
-
-            <Image Name="Maroon"
-                   Source="/Assets/Images/Characters/Maroon.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="MaroonScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="MaroonShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="Color" To="#6B2B3C" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Maroon_Label"
-               Content="Maroon"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="34,659,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Rose character: #ECC0D3 -->
-        <Border Height="100"
-                Width="100"
-                Margin="154,559,546,141">
-
-            <Image Name="Rose"
-                   Source="/Assets/Images/Characters/Rose.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="RoseScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="RoseShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="Color" To="#ECC0D3" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Rose_Label"
-               Content="Rose"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="164,659,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Banana character: #FFFEBE -->
-        <Border Height="100"
-                Width="100"
-                Margin="284,559,416,141">
-
-            <Image Name="Banana"
-                   Source="/Assets/Images/Characters/Banana.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="BananaScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="BananaShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="Color" To="#FFFEBE" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Banana_Label"
-               Content="Banana"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="294,659,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Gray character: #708495 -->
-        <Border Height="100"
-                Width="100"
-                Margin="414,559,286,141">
-
-            <Image Name="Gray"
-                   Source="/Assets/Images/Characters/Gray.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="GrayScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="GrayShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="Color" To="#708495" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Gray_Label"
-               Content="Gray"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="424,659,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Tan character: #928776 -->
-        <Border Height="100"
-                Width="100"
-                Margin="544,559,156,141">
-
-            <Image Name="Tan"
-                   Source="/Assets/Images/Characters/Tan.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="TanScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="TanShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="Color" To="#928776" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Tan_Label"
-               Content="Tan"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="554,659,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-        <!-- Coral character: #EC7578 -->
-        <Border Height="100"
-                Width="100"
-                Margin="674,559,26,141">
-
-            <Image Name="Coral"
-                   Source="/Assets/Images/Characters/Coral.png"
-                   Cursor="Hand"
-                   RenderTransformOrigin="0.5,0.5"
-                   MouseLeftButtonDown="Character_LeftClick"
-                   MouseRightButtonDown="Character_RightClick"
-                   Tag="0">
-
-                <Image.RenderTransform>
-                    <ScaleTransform x:Name="CoralScale" ScaleX="1" ScaleY="1" />
-                </Image.RenderTransform>
-                <Image.Effect>
-                    <DropShadowEffect x:Name="CoralShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
-                </Image.Effect>
-                <Image.Triggers>
-                    <EventTrigger RoutedEvent="MouseEnter">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="Color" To="#EC7578" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                    <EventTrigger RoutedEvent="MouseLeave">
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
-                                <ColorAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
-                                <DoubleAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger>
-                </Image.Triggers>
-            </Image>
-        </Border>
-
-        <Label Name="Coral_Label"
-               Content="Coral"
-               HorizontalContentAlignment="Center"
-               VerticalContentAlignment="Center"
-               FontSize="28"
-               HorizontalAlignment="Left"
-               Margin="684,659,0,0"
-               VerticalAlignment="Top"
-               Width="90"/>
-
-
-        <!-- Stats Label -->
-        <Label Name ="Stats"
-               FontSize="32"
-               Content="18 ALIVE   -   0 SAFE   -   0 SUS   -   0 DEAD"
-               Background="#BF000000"
-               HorizontalAlignment="Left"
-               VerticalContentAlignment="Center"
-               HorizontalContentAlignment="Center"
-               Margin="162,750,0,0"
-               VerticalAlignment="Top"
-               Width="482"/>
-
-        <!-- Sound control -->
-        <Border Name="Sound_Button"
-                Background="Transparent"
-                BorderBrush="{x:Null}"
-                Cursor="Hand"
-                ToolTip="Toggle sound effects"
-                HorizontalAlignment="Left"
-                Margin="700,14,0,0"
-                VerticalAlignment="Top"
-                Width="24"
-                Height="24"
-                MouseLeftButtonDown="Sound_Button_MouseLeftButtonDown">
-
-            <Path Name="SoundPath"
-                  Stretch="Uniform"
-                  Stroke="White"
-                  StrokeThickness="2"
-                  Data="M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13"/>
-        </Border>
-
-        <!-- Close button -->
-        <Border Name="Close_Button"
-                Background="Transparent"
-                BorderBrush="{x:Null}"
-                Cursor="Hand"
-                ToolTip="Close"
-                HorizontalAlignment="Left"
-                Margin="762,16,0,0"
-                VerticalAlignment="Top"
-                Width="20"
-                Height="20"
-                MouseLeftButtonDown="Close_Button_MouseLeftButtonDown"
-                OverridesDefaultStyle="True">
-
-            <Path Stretch="Uniform"
-                  Stroke="White"
-                  StrokeThickness="2"
-                  Data="M4 4L20 20M20 4L4 20" HorizontalAlignment="Right" Width="20"/>
-        </Border>
-
-        <!-- Refresh button -->
-        <Border Name="Refresh_Button"
-                Background="Transparent"
-                BorderBrush="{x:Null}"
-                Cursor="Hand"
-                ToolTip="Refresh"
-                HorizontalAlignment="Left"
-                Margin="732,16,0,0"
-                VerticalAlignment="Top"
-                Width="20"
-                Height="20"
-                MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown">
-
-            <Path Stretch="Uniform"
-                  Stroke="White"
-                  StrokeThickness="2"
-                  StrokeStartLineCap="Round"
-                  StrokeEndLineCap="Round"
-                  HorizontalAlignment="Left"
-                  Width="20"
-                  Data="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14">
-
-                <Path.RenderTransform>
-                    <RotateTransform x:Name="RefreshRotateTransform"
-                             CenterX="10"
-                             CenterY="10" />
-                </Path.RenderTransform>
-            </Path>
-        </Border>
-
-        <!-- GitHub button -->
-        <Border Name="GitHub_Button"
-                Background="Transparent"
-                BorderBrush="{x:Null}"
-                Cursor="Hand"
-                ToolTip="GitHub project!"
-                HorizontalAlignment="Left"
-                Margin="760,762,0,0"
-                VerticalAlignment="Top"
-                Width="24"
-                Height="26"
-                MouseLeftButtonDown="GitHub_Button_MouseLeftButtonDown">
-
-            <Path Stretch="Uniform"
-                  Stroke="White"
-                  StrokeThickness="1.5"
-                  Data="M24,2.5a21.5,21.5,0,0,0-6.8,41.9c1.08.2,1.47-.46,1.47-1s0-1.86,0-3.65c-6,1.3-7.24-2.88-7.24-2.88A5.7,5.7,0,0,0,9,33.68c-1.95-1.33.15-1.31.15-1.31a4.52,4.52,0,0,1,3.29,2.22c1.92,3.29,5,2.34,6.26,1.79a4.61,4.61,0,0,1,1.37-2.88c-4.78-.54-9.8-2.38-9.8-10.62a8.29,8.29,0,0,1,2.22-5.77,7.68,7.68,0,0,1,.21-5.69s1.8-.58,5.91,2.2a20.46,20.46,0,0,1,10.76,0c4.11-2.78,5.91-2.2,5.91-2.2a7.74,7.74,0,0,1,.21,5.69,8.28,8.28,0,0,1,2.21,5.77c0,8.26-5,10.07-9.81,10.61a5.12,5.12,0,0,1,1.46,4c0,2.87,0,5.19,0,5.9s.39,1.24,1.48,1A21.5,21.5,0,0,0,24,2.5"/>
-        </Border>
-    </Grid>
+                   Height="58"
+                   Width="143"
+                   Margin="10,0,0,0"/>
+
+            <!-- Red character: #C61111 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="24,141,676,559">
+
+                <Image Name="Red"
+                       Source="/Assets/Images/Characters/Red.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="RedScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="RedShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="Color" To="#C61111" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RedScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RedShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Red_Label"
+                   Content="Red"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="34,241,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Blue character: #132ED2 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="154,141,546,559">
+
+                <Image Name="Blue"
+                       Source="/Assets/Images/Characters/Blue.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="BlueScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="BlueShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="Color" To="#132ED2" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlueScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlueShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Blue_Label"
+                   Content="Blue"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="164,241,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Green character: #11802D -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="284,141,416,559">
+
+                <Image Name="Green"
+                       Source="/Assets/Images/Characters/Green.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="GreenScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="GreenShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="Color" To="#11802D" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GreenScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GreenShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Green_Label"
+                   Content="Green"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="294,241,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Pink character: #EE54BB -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="414,141,286,559">
+
+                <Image Name="Pink"
+                       Source="/Assets/Images/Characters/Pink.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="PinkScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="PinkShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="Color" To="#EE54BB" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PinkScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PinkShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Pink_Label"
+                   Content="Pink"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="424,241,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Orange character: #F07D0D -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="544,141,156,559">
+
+                <Image Name="Orange"
+                       Source="/Assets/Images/Characters/Orange.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="OrangeScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="OrangeShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="Color" To="#F07D0D" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="OrangeScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="OrangeShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Orange_Label"
+                   Content="Orange"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="554,241,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Yellow character: #F6F657 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="674,141,26,559">
+
+                <Image Name="Yellow"
+                       Source="/Assets/Images/Characters/Yellow.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="YellowScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="YellowShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="Color" To="#F6F657" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="YellowScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="YellowShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Yellow_Label"
+                   Content="Yellow"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="684,241,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Black character: #3F474E -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="24,350,676,350">
+
+                <Image Name="Black"
+                       Source="/Assets/Images/Characters/Black.png"
+                       Cursor="Hand" RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="BlackScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="BlackShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="Color" To="#3F474E" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlackScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BlackShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Black_Label"
+                   Content="Black"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="34,450,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- White character: #D7E1F1 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="154,350,546,350">
+
+                <Image Name="White"
+                       Source="/Assets/Images/Characters/White.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="WhiteScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="WhiteShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="Color" To="#D7E1F1" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="WhiteScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="WhiteShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="White_Label"
+                   Content="White"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="164,450,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Purple character: #6B2FBC -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="284,350,416,350">
+
+                <Image Name="Purple"
+                       Source="/Assets/Images/Characters/Purple.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="PurpleScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="PurpleShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="Color" To="#6B2FBC" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PurpleScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="PurpleShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Purple_Label"
+                   Content="Purple"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="294,450,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Brown character: #71491E -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="414,350,286,350">
+
+                <Image Name="Brown"
+                       Source="/Assets/Images/Characters/Brown.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="BrownScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="BrownShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="Color" To="#71491E" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BrownScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BrownShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Brown_Label"
+                   Content="Brown"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="424,450,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Cyan character: #38E2DD -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="544,350,156,350">
+
+                <Image Name="Cyan"
+                       Source="/Assets/Images/Characters/Cyan.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="CyanScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="CyanShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="Color" To="#38E2DD" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CyanScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CyanShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Cyan_Label"
+                   Content="Cyan"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="554,450,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Lime character: #50F039 -->
+            <Border Height="100" Width="100" Margin="674,350,26,350">
+                <Image Name="Lime"
+                       Source="/Assets/Images/Characters/Lime.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="LimeScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="LimeShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="Color" To="#50F039" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="LimeScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="LimeShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Lime_Label"
+                   Content="Lime"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="684,450,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Maroon character: #6B2B3C -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="24,559,676,141">
+
+                <Image Name="Maroon"
+                       Source="/Assets/Images/Characters/Maroon.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="MaroonScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="MaroonShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="Color" To="#6B2B3C" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="MaroonScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="MaroonShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Maroon_Label"
+                   Content="Maroon"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="34,659,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Rose character: #ECC0D3 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="154,559,546,141">
+
+                <Image Name="Rose"
+                       Source="/Assets/Images/Characters/Rose.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="RoseScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="RoseShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="Color" To="#ECC0D3" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RoseScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="RoseShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Rose_Label"
+                   Content="Rose"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="164,659,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Banana character: #FFFEBE -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="284,559,416,141">
+
+                <Image Name="Banana"
+                       Source="/Assets/Images/Characters/Banana.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="BananaScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="BananaShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="Color" To="#FFFEBE" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BananaScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="BananaShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Banana_Label"
+                   Content="Banana"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="294,659,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Gray character: #708495 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="414,559,286,141">
+
+                <Image Name="Gray"
+                       Source="/Assets/Images/Characters/Gray.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="GrayScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="GrayShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="Color" To="#708495" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GrayScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="GrayShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Gray_Label"
+                   Content="Gray"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="424,659,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Tan character: #928776 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="544,559,156,141">
+
+                <Image Name="Tan"
+                       Source="/Assets/Images/Characters/Tan.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="TanScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="TanShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="Color" To="#928776" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="TanScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="TanShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Tan_Label"
+                   Content="Tan"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="554,659,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Coral character: #EC7578 -->
+            <Border Height="100"
+                    Width="100"
+                    Margin="674,559,26,141">
+
+                <Image Name="Coral"
+                       Source="/Assets/Images/Characters/Coral.png"
+                       Cursor="Hand"
+                       RenderTransformOrigin="0.5,0.5"
+                       MouseLeftButtonDown="Character_LeftClick"
+                       MouseRightButtonDown="Character_RightClick"
+                       Tag="0">
+
+                    <Image.RenderTransform>
+                        <ScaleTransform x:Name="CoralScale" ScaleX="1" ScaleY="1" />
+                    </Image.RenderTransform>
+                    <Image.Effect>
+                        <DropShadowEffect x:Name="CoralShadow" Color="Black" ShadowDepth="0" BlurRadius="0" />
+                    </Image.Effect>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleX" To="1.05" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleY" To="1.05" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="Color" To="#EC7578" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="BlurRadius" To="60" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleX" To="1.0" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CoralScale" Storyboard.TargetProperty="ScaleY" To="1.0" Duration="0:0:0.1"/>
+                                    <ColorAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="Color" To="Black" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="CoralShadow" Storyboard.TargetProperty="BlurRadius" To="0" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
+            </Border>
+
+            <Label Name="Coral_Label"
+                   Content="Coral"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="684,659,0,0"
+                   VerticalAlignment="Top"
+                   Width="90"/>
+
+            <!-- Stats Label -->
+            <Label Name ="Stats"
+                   FontSize="32"
+                   Content="18 ALIVE   -   0 SAFE   -   0 SUS   -   0 DEAD"
+                   Background="#BF000000"
+                   HorizontalAlignment="Left"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Margin="162,750,0,0"
+                   VerticalAlignment="Top"
+                   Width="482"/>
+
+            <!-- Sound control -->
+            <Border Name="Sound_Button"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Cursor="Hand"
+                    ToolTip="Toggle sound effects"
+                    HorizontalAlignment="Left"
+                    Margin="700,14,0,0"
+                    VerticalAlignment="Top"
+                    Width="24"
+                    Height="24"
+                    MouseLeftButtonDown="Sound_Button_MouseLeftButtonDown">
+
+                <Path Name="SoundPath"
+                      Stretch="Uniform"
+                      Stroke="White"
+                      StrokeThickness="2"
+                      Data="M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13"/>
+            </Border>
+
+            <!-- Close button -->
+            <Border Name="Close_Button"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Cursor="Hand"
+                    ToolTip="Close"
+                    HorizontalAlignment="Left"
+                    Margin="762,16,0,0"
+                    VerticalAlignment="Top"
+                    Width="20"
+                    Height="20"
+                    MouseLeftButtonDown="Close_Button_MouseLeftButtonDown"
+                    OverridesDefaultStyle="True">
+
+                <Path Stretch="Uniform"
+                      Stroke="White"
+                      StrokeThickness="2"
+                      Data="M4 4L20 20M20 4L4 20" HorizontalAlignment="Right" Width="20"/>
+            </Border>
+
+            <!-- Refresh button -->
+            <Border Name="Refresh_Button"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Cursor="Hand"
+                    ToolTip="Refresh"
+                    HorizontalAlignment="Left"
+                    Margin="732,16,0,0"
+                    VerticalAlignment="Top"
+                    Width="20"
+                    Height="20"
+                    MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown">
+
+                <Path Stretch="Uniform"
+                      Stroke="White"
+                      StrokeThickness="2"
+                      StrokeStartLineCap="Round"
+                      StrokeEndLineCap="Round"
+                      HorizontalAlignment="Left"
+                      Width="20"
+                      Data="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14">
+
+                    <Path.RenderTransform>
+                        <RotateTransform x:Name="RefreshRotateTransform"
+                                 CenterX="10"
+                                 CenterY="10" />
+                    </Path.RenderTransform>
+                </Path>
+            </Border>
+
+            <!-- GitHub button -->
+            <Border Name="GitHub_Button"
+                    Background="Transparent"
+                    BorderBrush="{x:Null}"
+                    Cursor="Hand"
+                    ToolTip="GitHub project!"
+                    HorizontalAlignment="Left"
+                    Margin="760,762,0,0"
+                    VerticalAlignment="Top"
+                    Width="24"
+                    Height="26"
+                    MouseLeftButtonDown="GitHub_Button_MouseLeftButtonDown">
+
+                <Path Stretch="Uniform"
+                      Stroke="White"
+                      StrokeThickness="1.5"
+                      Data="M24,2.5a21.5,21.5,0,0,0-6.8,41.9c1.08.2,1.47-.46,1.47-1s0-1.86,0-3.65c-6,1.3-7.24-2.88-7.24-2.88A5.7,5.7,0,0,0,9,33.68c-1.95-1.33.15-1.31.15-1.31a4.52,4.52,0,0,1,3.29,2.22c1.92,3.29,5,2.34,6.26,1.79a4.61,4.61,0,0,1,1.37-2.88c-4.78-.54-9.8-2.38-9.8-10.62a8.29,8.29,0,0,1,2.22-5.77,7.68,7.68,0,0,1,.21-5.69s1.8-.58,5.91,2.2a20.46,20.46,0,0,1,10.76,0c4.11-2.78,5.91-2.2,5.91-2.2a7.74,7.74,0,0,1,.21,5.69,8.28,8.28,0,0,1,2.21,5.77c0,8.26-5,10.07-9.81,10.61a5.12,5.12,0,0,1,1.46,4c0,2.87,0,5.19,0,5.9s.39,1.24,1.48,1A21.5,21.5,0,0,0,24,2.5"/>
+            </Border>
+        </Grid>
+    </Border>
 </Window>
