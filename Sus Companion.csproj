@@ -40,13 +40,6 @@
     <None Remove="assets\sounds\dead.wav" />
     <None Remove="assets\sounds\refresh.wav" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Content Include="assets\images\misc\icon.ico" />
-    <EmbeddedResource Include="assets\sounds\refresh.wav">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
 
   <ItemGroup>
     <Resource Include="assets\fonts\amongus.ttf">
@@ -115,6 +108,9 @@
     <EmbeddedResource Include="assets\sounds\dead.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="assets\sounds\refresh.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -150,10 +146,10 @@
 	<AssemblyTitle>Sus_Companion</AssemblyTitle>
 	<Authors>Lucas Jammes</Authors>
 	<Copyright>Copyright © Lucas Jammes 2025</Copyright>
-	<Version>1.6.0</Version>
-	<FileVersion>1.6.0</FileVersion>
-	<AssemblyVersion>1.6.0</AssemblyVersion>
-	<InformationalVersion>1.6.0</InformationalVersion>
+	<Version>1.7.0</Version>
+	<FileVersion>1.7.0</FileVersion>
+	<AssemblyVersion>1.7.0</AssemblyVersion>
+	<InformationalVersion>1.7.0</InformationalVersion>
 	<Description>Portable app to help AmongUs players!</Description>
   </PropertyGroup>
 </Project>
