@@ -7,9 +7,8 @@
 
   <p align="center">
     <img src="https://img.shields.io/github/license/lucas-jammes/SusCompanion" title="GPL-3.0 License">
-    <img src="https://img.shields.io/github/v/release/lucas-jammes/SusCompanion" title="Latest release">
-    <img src="https://img.shields.io/badge/maintenance-actively--developed-brightgreen.svg" title="Level of maintenance">
     <img src="https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total" title="Total downloads">
+    <a href="https://www.paypal.me/lucasjammes" target="_blank"><img src="https://img.shields.io/badge/💙-Donate_via_PayPal-blue.svg" alt="Donate via PayPal"></a>
   </p>
 
   <p align="center">
@@ -73,5 +72,3 @@ Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gn
 
 [release-page]: https://github.com/lucas-jammes/SusCompanion/releases/latest "Latest release"  
 [direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.7.0/Sus_Companion.exe "Direct download"
-
-<!-- Maintenance badge generator: https://gist.github.com/taiki-e/ad73eaea17e2e0372efb76ef6b38f17b -->  
