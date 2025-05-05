@@ -238,7 +238,6 @@ namespace Sus_Companion
             Refresh_Button.IsEnabled = true;
         }
 
-
         /// <summary>
         /// Starts a single 360-degree rotation animation on the refresh icon
         /// </summary>
@@ -313,7 +312,6 @@ namespace Sus_Companion
             Properties.Settings.Default.IsSoundEnabled = IsSoundEnabled;
             Properties.Settings.Default.Save();
         }
-
 
         #endregion
 
