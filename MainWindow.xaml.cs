@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -16,10 +15,7 @@ namespace Sus_Companion
         private bool IsSoundEnabled = true;
 
         // Cache the loaded sound files
-        private readonly Dictionary<string, byte[]> _soundCache = new();
-
-        // List to keep track of active MediaPlayer instances
-        private readonly List<MediaPlayer> _activePlayers = [];
+        private readonly Dictionary<string, MediaPlayer> _soundPlayers = [];
 
         public MainWindow()
         {
@@ -68,24 +64,39 @@ namespace Sus_Companion
             base.OnClosing(e);
         }
 
+        /// <summary>
+        /// Preloads MediaPlayer instances for each sound from embedded resources and keeps them ready for playback.
+        /// </summary>
         private void PreloadSounds()
         {
+            // List of sound file names to preload
             string[] soundNames = { "select.wav", "dead.wav", "refresh.wav", "sound-on.wav", "sound-off.wav", "alive.wav" };
 
-            foreach (var name in soundNames)
+            foreach (string name in soundNames)
             {
                 string resourcePath = $"Sus_Companion.assets.sounds.{name}";
                 using Stream? stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
-                if (stream != null)
-                {
-                    using MemoryStream ms = new();
-                    stream.CopyTo(ms);
-                    _soundCache[name] = ms.ToArray();
-                }
-                else
+
+                if (stream == null)
                 {
                     _ = MessageBox.Show($"Sound resource {resourcePath} not found.");
+                    continue;
                 }
+
+                // Load the embedded resource into a temporary WAV file
+                string tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.wav");
+                using (FileStream fs = File.Create(tempFile))
+                {
+                    stream.CopyTo(fs);
+                }
+
+                // Create and configure the MediaPlayer
+                MediaPlayer player = new();
+                player.Open(new Uri(tempFile, UriKind.Absolute));
+                player.Stop();
+                player.Volume = 0;
+
+                _soundPlayers[name] = player;
             }
         }
 
@@ -131,17 +142,17 @@ namespace Sus_Companion
                 case 1:
                     label.Foreground = Brushes.LimeGreen;
                     label.Content = "SAFE";
-                    PlaySound("select.wav", 0.3);
+                    PlaySound("select.wav", 0.2);
                     break;
                 case 2:
                     label.Foreground = Brushes.Red;
                     label.Content = "SUS";
-                    PlaySound("select.wav", 0.3);
+                    PlaySound("select.wav", 0.2);
                     break;
                 default:
                     label.Foreground = Brushes.White;
                     label.Content = img.Name;
-                    PlaySound("alive.wav", 0.3);
+                    PlaySound("alive.wav", 0.2);
                     break;
             }
 
@@ -289,7 +300,7 @@ namespace Sus_Companion
         {
             if (IsSoundEnabled)
             {
-                PlaySound("sound-off.wav", 0.2);
+                PlaySound("sound-off.wav", 0.3);
 
                 IsSoundEnabled = false;
 
@@ -301,7 +312,7 @@ namespace Sus_Companion
             {
                 IsSoundEnabled = true;
 
-                PlaySound("sound-on.wav", 0.2);
+                PlaySound("sound-on.wav", 0.3);
 
                 // Update the sound icon and visual state
                 SoundPath.Data = Geometry.Parse("M3 11V13 M6 8V16 M9 10V14 M12 7V17 M15 4V20 M18 9V15 M21 11V13");
@@ -373,50 +384,34 @@ namespace Sus_Companion
         }
 
         /// <summary>
-        /// Plays a sound from embedded resources with optional volume control. 
-        /// Supports overlapping sounds without interrupting others.
+        /// Plays a preloaded sound with specified volume. Supports overlapping playback without interrupting other sounds.
         /// </summary>
-        /// <param name="resourceName">The embedded sound file name (e.g., "dead.wav")</param>
-        /// <param name="volume">Playback volume from 0.0 to 1.0</param>
+        /// <param name="resourceName">The embedded sound filename (e.g., "dead.wav").</param>
+        /// <param name="volume">Playback volume from 0.0 to 1.0.</param>
         private void PlaySound(string resourceName, double volume)
         {
-            if (!IsSoundEnabled) return;
-
-            string resourcePath = $"Sus_Companion.assets.sounds.{resourceName}";
-            using Stream? stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
-
-            if (stream == null)
+            if (!IsSoundEnabled)
             {
-                _ = MessageBox.Show($"Resource {resourcePath} not found.");
                 return;
             }
 
-            // Load the embedded resource into memory
-            MemoryStream memoryStream = new();
-            stream.CopyTo(memoryStream);
-            memoryStream.Position = 0;
-
-            // Save the memory content into a temporary WAV file
-            string tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.wav");
-            File.WriteAllBytes(tempFile, memoryStream.ToArray());
-
-            // Create a new MediaPlayer instance for concurrent playback
-            MediaPlayer player = new();
-
-            // Set the volume after the media is opened to ensure it takes effect
-            player.MediaOpened += (s, e) =>
+            if (!_soundPlayers.TryGetValue(resourceName, out MediaPlayer? originalPlayer))
             {
-                player.Volume = volume;
-            };
+                _ = MessageBox.Show($"Sound {resourceName} not preloaded.");
+                return;
+            }
 
-            player.Open(new Uri(tempFile, UriKind.Absolute));
+            // Create a clone of the original MediaPlayer for concurrent playback
+            MediaPlayer player = new();
+            player.Open(originalPlayer.Source);
+            player.Volume = volume;
+
             player.Play();
 
             // Cleanup after playback ends
             player.MediaEnded += (s, e) =>
             {
                 player.Close();
-                try { File.Delete(tempFile); } catch { }
             };
         }
 
