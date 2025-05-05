@@ -23,7 +23,7 @@
 
 No installation required:
 
-1. [Download the latest version][direct-download]
+1. Download the [latest version][direct-download]
 2. Launch `Sus Companion.exe`
 3. You're good to go!
 
