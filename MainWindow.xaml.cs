@@ -70,7 +70,7 @@ namespace Sus_Companion
         private void PreloadSounds()
         {
             // List of sound file names to preload
-            string[] soundNames = { "select.wav", "dead.wav", "refresh.wav", "sound-on.wav", "sound-off.wav", "alive.wav" };
+            string[] soundNames = { "select.wav", "dead.wav", "refresh.wav", "sound-on.wav", "sound-off.wav", "alive.wav", "browser.wav", "close.wav" };
 
             foreach (string name in soundNames)
             {
@@ -283,6 +283,22 @@ namespace Sus_Companion
                 FileName = "https://github.com/lucas-jammes/SusCompanion",
                 UseShellExecute = true
             });
+
+            PlaySound("browser.wav", 0.3);
+        }
+
+        /// <summary>
+        /// Opens a PayPal donation tab in the default web browser.
+        /// </summary>
+        private void PayPal_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _ = System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+            {
+                FileName = "https://www.paypal.com/paypalme/lucasjammes",
+                UseShellExecute = true
+            });
+
+            PlaySound("browser.wav", 0.3);
         }
 
         /// <summary>
@@ -290,6 +306,7 @@ namespace Sus_Companion
         /// </summary>
         private void Close_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            PlaySound("close.wav", 0.3);
             Close();
         }
 
