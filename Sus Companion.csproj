@@ -39,6 +39,9 @@
     <None Remove="assets\images\misc\tutorial.gif" />
     <None Remove="assets\sounds\dead.wav" />
     <None Remove="assets\sounds\refresh.wav" />
+    <None Remove="assets\sounds\select.wav" />
+    <None Remove="assets\sounds\sound-off.wav" />
+    <None Remove="assets\sounds\sound-on.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -105,10 +108,22 @@
     <Resource Include="assets\images\misc\tutorial.gif">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <EmbeddedResource Include="assets\sounds\alive.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="assets\sounds\dead.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="assets\sounds\refresh.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="assets\sounds\select.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="assets\sounds\sound-off.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="assets\sounds\sound-on.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -12,7 +13,10 @@ namespace Sus_Companion
     public partial class MainWindow : Window
     {
         // Enable sound by default
-         private bool IsSoundEnabled = true;
+        private bool IsSoundEnabled = true;
+
+        // Cache the loaded sound files
+        private readonly Dictionary<string, byte[]> _soundCache = new();
 
         // List to keep track of active MediaPlayer instances
         private readonly List<MediaPlayer> _activePlayers = [];
@@ -30,6 +34,9 @@ namespace Sus_Companion
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
+
+            // Preload sound files from embedded resources
+            PreloadSounds();
 
             // Update the Stats label located at the bottom of the window
             UpdateStats();
@@ -61,6 +68,27 @@ namespace Sus_Companion
             base.OnClosing(e);
         }
 
+        private void PreloadSounds()
+        {
+            string[] soundNames = { "select.wav", "dead.wav", "refresh.wav", "sound-on.wav", "sound-off.wav", "alive.wav" };
+
+            foreach (var name in soundNames)
+            {
+                string resourcePath = $"Sus_Companion.assets.sounds.{name}";
+                using Stream? stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
+                if (stream != null)
+                {
+                    using MemoryStream ms = new();
+                    stream.CopyTo(ms);
+                    _soundCache[name] = ms.ToArray();
+                }
+                else
+                {
+                    _ = MessageBox.Show($"Sound resource {resourcePath} not found.");
+                }
+            }
+        }
+
         #endregion
 
         #region Character interaction methods
@@ -71,8 +99,15 @@ namespace Sus_Companion
         private void Character_LeftClick(object sender, MouseButtonEventArgs e)
         {
             // Check if the sender is an Image and if its Label exists
-            if (sender is not Image img) return;
-            if (FindName($"{img.Name}_Label") is not Label label) return;
+            if (sender is not Image img)
+            {
+                return;
+            }
+
+            if (FindName($"{img.Name}_Label") is not Label label)
+            {
+                return;
+            }
 
             // If the character is dead, set it to ALIVE state
             if (img.Opacity < 1.0)
@@ -96,14 +131,17 @@ namespace Sus_Companion
                 case 1:
                     label.Foreground = Brushes.LimeGreen;
                     label.Content = "SAFE";
+                    PlaySound("select.wav", 0.3);
                     break;
                 case 2:
                     label.Foreground = Brushes.Red;
                     label.Content = "SUS";
+                    PlaySound("select.wav", 0.3);
                     break;
                 default:
                     label.Foreground = Brushes.White;
                     label.Content = img.Name;
+                    PlaySound("alive.wav", 0.3);
                     break;
             }
 
@@ -116,8 +154,15 @@ namespace Sus_Companion
         private void Character_RightClick(object sender, MouseButtonEventArgs e)
         {
             // Check if the sender is an Image and if its Label exists
-            if (sender is not Image img) return;
-            if (FindName($"{img.Name}_Label") is not Label label) return;
+            if (sender is not Image img)
+            {
+                return;
+            }
+
+            if (FindName($"{img.Name}_Label") is not Label label)
+            {
+                return;
+            }
 
             // Check if the character is dead
             bool isDead = img.Opacity < 1.0;
@@ -243,27 +288,32 @@ namespace Sus_Companion
         /// </summary>
         private void Sound_Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            // Toggle the sound on and off
-            IsSoundEnabled = !IsSoundEnabled;
-
-            // Update the sound icon path based on the sound state
             if (IsSoundEnabled)
             {
-                // Sound On SVG data
-                SoundPath.Data = Geometry.Parse("M3 11V13 M6 8V16 M9 10V14 M12 7V17 M15 4V20 M18 9V15 M21 11V13");
-                Sound_Button.Opacity = 1.0;
-            }
-            else
-            {
-                // Sound Off SVG data
+                PlaySound("sound-off.wav", 0.2);
+
+                IsSoundEnabled = false;
+
+                // Update the sound icon and visual state
                 SoundPath.Data = Geometry.Parse("M3 11V13 M6 11V13 M9 11V13 M12 10V14 M15 11V13 M18 11V13 M21 11V13");
                 Sound_Button.Opacity = 0.5;
             }
+            else
+            {
+                IsSoundEnabled = true;
 
-            // Save sound settings for future sessions
+                PlaySound("sound-on.wav", 0.2);
+
+                // Update the sound icon and visual state
+                SoundPath.Data = Geometry.Parse("M3 11V13 M6 8V16 M9 10V14 M12 7V17 M15 4V20 M18 9V15 M21 11V13");
+                Sound_Button.Opacity = 1.0;
+            }
+
+            // Persist the sound setting for future sessions
             Properties.Settings.Default.IsSoundEnabled = IsSoundEnabled;
             Properties.Settings.Default.Save();
         }
+
 
         #endregion
 
@@ -325,33 +375,46 @@ namespace Sus_Companion
         }
 
         /// <summary>
-        /// Plays a sound file at the specified volume if sound is enabled.
+        /// Plays a sound from embedded resources with optional volume control. 
+        /// Supports overlapping sounds without interrupting others.
         /// </summary>
-        /// <param name="soundFile">The file path to the sound file</param>
-        /// <param name="volume">The volume level (0.0 to 1.0)</param>
-        private void PlaySound(string resourceName, double volume = 1.0)
+        /// <param name="resourceName">The embedded sound file name (e.g., "dead.wav")</param>
+        /// <param name="volume">Playback volume from 0.0 to 1.0</param>
+        private void PlaySound(string resourceName, double volume)
         {
             if (!IsSoundEnabled) return;
 
-            string resourcePath = "Sus_Companion.assets.sounds." + resourceName;
-            using var stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
+            string resourcePath = $"Sus_Companion.assets.sounds.{resourceName}";
+            using Stream? stream = GetType().Assembly.GetManifestResourceStream(resourcePath);
 
             if (stream == null)
             {
-                MessageBox.Show($"Resource {resourcePath} not found.");
+                _ = MessageBox.Show($"Resource {resourcePath} not found.");
                 return;
             }
 
-            string tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.wav");
-            using (var fileStream = File.Create(tempFile))
-            {
-                stream.CopyTo(fileStream);
-            }
+            // Load the embedded resource into memory
+            MemoryStream memoryStream = new();
+            stream.CopyTo(memoryStream);
+            memoryStream.Position = 0;
 
-            var player = new MediaPlayer();
+            // Save the memory content into a temporary WAV file
+            string tempFile = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.wav");
+            File.WriteAllBytes(tempFile, memoryStream.ToArray());
+
+            // Create a new MediaPlayer instance for concurrent playback
+            MediaPlayer player = new();
+
+            // Set the volume after the media is opened to ensure it takes effect
+            player.MediaOpened += (s, e) =>
+            {
+                player.Volume = volume;
+            };
+
             player.Open(new Uri(tempFile, UriKind.Absolute));
-            player.Volume = volume;
             player.Play();
+
+            // Cleanup after playback ends
             player.MediaEnded += (s, e) =>
             {
                 player.Close();
@@ -359,18 +422,17 @@ namespace Sus_Companion
             };
         }
 
-
         /// <summary>
         ///  Resets the animation of all characters to their initial state.
         /// </summary>
         private void ResetCharactersAnimation()
         {
-            var images = MainGrid.Children
+            IEnumerable<Image> images = MainGrid.Children
                 .OfType<Border>()
                 .Select(b => b.Child)
                 .OfType<Image>();
 
-            foreach (var img in images)
+            foreach (Image img in images)
             {
                 if (img.Opacity < 1.0)
                 {
@@ -378,7 +440,7 @@ namespace Sus_Companion
                     img.Opacity = 1.0;
 
                     // Start Fade In animation (opacity from 0.15 to 1.0 in 0.5 seconds)
-                    var fadeIn = new DoubleAnimation
+                    DoubleAnimation fadeIn = new()
                     {
                         From = 0.15,
                         To = 1.0,
