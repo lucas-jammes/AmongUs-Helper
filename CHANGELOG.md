@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.9.0] - 2025-05-06
+
+### Added
+
+- Add a **custom character selection** button to the app.
+- User can **choose a character** as his custom character.
+- Prevent selecting a dead character as "YOU"
+- **Clean reset** of previous "YOU" label and color before new selection
+- User label color **matches the character color** automatically when selecting
+- Refresh button **ignores** the custom character selection
+
+### Changed
+
+- Small refactor of user selection logic for clarity
+
+---
+
 ## [1.8.0] 2025-05-06
 
 ### Added  
