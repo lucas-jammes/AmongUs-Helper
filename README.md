@@ -8,7 +8,7 @@
   <p align="center">
     <img src="https://img.shields.io/github/license/lucas-jammes/SusCompanion" title="GPL-3.0 License">
     <img src="https://img.shields.io/github/downloads/lucas-jammes/SusCompanion/total" title="Total downloads">
-    <a href="https://www.paypal.me/lucasjammes" target="_blank"><img src="https://img.shields.io/badge/💙-Donate_via_PayPal-blue.svg" alt="Donate via PayPal"></a>
+    <a href="https://www.paypal.me/lucasjammes" target="_blank"><img src="https://img.shields.io/badge/💙-Support_the_app-blue.svg" alt="Support the app"></a>
   </p>
 
   <p align="center">
