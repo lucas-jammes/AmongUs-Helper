@@ -32,14 +32,19 @@ No installation required:
 
 ## 🎮 How to Use
 
-- 🖱 **Left-click** a crewmate to cycle:
-  - ![LimeGreen](https://place-hold.it/10/32CD32/32CD32) → **Safe**
-  - ![Red](https://place-hold.it/10/FF0000/FF0000) → **Sus**
+- 🖱 **Left-click** a crewmate to cycle:  
+  - ![LimeGreen](https://place-hold.it/10/32CD32/32CD32) → **Safe**  
+  - ![Red](https://place-hold.it/10/FF0000/FF0000) → **Sus**  
   - ![White](https://place-hold.it/10/FFFFFF/FFFFFF) → **Unknown**
+
 - 🖱 **Right-click** a crewmate to toggle between:  
-  - ![DarkSlateGray](https://place-hold.it/10/2F4F4F/2F4F4F) → **Dead**
+  - ![DarkSlateGray](https://place-hold.it/10/2F4F4F/2F4F4F) → **Dead**  
   - ![White](https://place-hold.it/10/FFFFFF/FFFFFF) → **Alive**
+
+- 🎨 **Click the app icon at the bottom left** to choose your custom color.
+
 - ↻ **Click the Refresh button** (top right) to reset all states.
+
 
 ---
 
@@ -71,4 +76,4 @@ Licensed under **GNU General Public License v3.0** - [Learn more](https://www.gn
 ---
 
 [release-page]: https://github.com/lucas-jammes/SusCompanion/releases/latest "Latest release"  
-[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.7.0/Sus_Companion.exe "Direct download"
+[direct-download]: https://github.com/lucas-jammes/SusCompanion/releases/download/v1.9.0/Sus_Companion.exe "Direct download"
