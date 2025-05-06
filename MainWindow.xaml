@@ -1092,7 +1092,7 @@
                 HorizontalAlignment="Center"
                 VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center"
-                Margin="0,740,0,0"
+                Margin="0,734,0,0"
                 VerticalAlignment="Top"
                 Width="358"/>
 
@@ -1103,17 +1103,17 @@
                 Cursor="Hand"
                 ToolTip="Select your character"
                 HorizontalAlignment="Left"
-                Margin="15,741,0,0"
+                Margin="15,731,0,0"
                 VerticalAlignment="Top"
-                Width="50"
-                Height="50">
+                Width="60"
+                Height="60">
 
             <Image Name="User"
-                   Source="/Assets/Images/misc/logo.png"
+                   Source="/assets/images/misc/logo.png"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Width="50"
-                   Height="50"
+                   Width="60"
+                   Height="60"
                    MouseLeftButtonDown="User_Button_Click"/>
         </Border>
         

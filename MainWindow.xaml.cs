@@ -5,6 +5,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using Sus_Companion.Properties;
 
 namespace Sus_Companion
@@ -16,6 +17,13 @@ namespace Sus_Companion
 
         // Cache the loaded sound files
         private readonly Dictionary<string, MediaPlayer> _soundPlayers = [];
+
+        // Whether the user is selecting a character
+        private bool IsUserSelectingCharacter = false;
+
+        // References to the user character image and label
+        private Image? UserCharacterImage = null;
+        private Label? UserCharacterLabel = null;
 
         public MainWindow()
         {
@@ -105,7 +113,7 @@ namespace Sus_Companion
         #region Character interaction methods
 
         /// <summary>
-        /// Handles a left click on a character to cycle its state between SAFE, SUS, and ALIVE (the character's name).
+        /// Handles a left click on a character to cycle its state between SAFE, SUS, and ALIVE (or sets/unsets user if selecting).
         /// </summary>
         private void Character_LeftClick(object sender, MouseButtonEventArgs e)
         {
@@ -120,7 +128,47 @@ namespace Sus_Companion
                 return;
             }
 
-            // If the character is dead, set it to ALIVE state
+            // If we're in "User Selection" mode
+            if (IsUserSelectingCharacter)
+            {
+                // Prevent selecting a dead character
+                if (img.Opacity < 1.0)
+                {
+                    return;
+                }
+
+                // Reset previous user selection (if any)
+                if (UserCharacterLabel != null)
+                {
+                    UserCharacterLabel.Content = UserCharacterImage!.Name;
+                    UserCharacterLabel.Foreground = Brushes.White;
+                }
+
+                // Assign the clicked character as the user
+                UserCharacterImage = img;
+                UserCharacterLabel = label;
+
+                // Change the label to "YOU" and match its color
+                label.Content = "YOU";
+                label.Foreground = GetCharacterColor(img.Name);
+
+                // Change the User image icon
+                User.Source = img.Source;
+
+                // Exit user selection mode
+                IsUserSelectingCharacter = false;
+
+                return;
+            }
+
+
+            // Prevent state cycling if this character is the user
+            if (UserCharacterImage == img)
+            {
+                return;
+            }
+
+            // If the character is dead → set alive
             if (img.Opacity < 1.0)
             {
                 img.Opacity = 1.0;
@@ -131,12 +179,12 @@ namespace Sus_Companion
                 return;
             }
 
-            // Else, cycle through the states
+            // Cycle state
             int state = img.Tag is int t ? t : 0;
             state = (state + 1) % 3;
             img.Tag = state;
 
-            // Set the label content and color based on the state
+            // Update label
             switch (state)
             {
                 case 1:
@@ -159,6 +207,7 @@ namespace Sus_Companion
             UpdateStats();
         }
 
+
         /// <summary>
         /// Handles a right click on a character to toggle its DEAD/ALIVE (character's name) state.
         /// </summary>
@@ -172,6 +221,13 @@ namespace Sus_Companion
 
             if (FindName($"{img.Name}_Label") is not Label label)
             {
+                return;
+            }
+
+            // Prevent right click action if this character is the user
+            if (UserCharacterImage == img)
+            {
+                // Optionally, you can show a tooltip or feedback here
                 return;
             }
 
@@ -200,10 +256,21 @@ namespace Sus_Companion
             UpdateStats();
         }
 
+        /// <summary>
+        /// Handles a mouse click on the User button to enter user selection mode.
+        /// </summary>
         private void User_Button_Click(object sender, MouseButtonEventArgs e)
         {
+            // Play selection sound
+            PlaySound("select.wav", 0.3);
 
+            // Enter User Selection mode : next click on a character will assign them as the user
+            IsUserSelectingCharacter = true;
+
+            // Show a tooltip on User button
+            User.ToolTip = "Click on a character to assign them as your character.";
         }
+
         #endregion
 
         #region TopBar and button interaction methods
@@ -218,10 +285,20 @@ namespace Sus_Companion
             {
                 switch (element)
                 {
-                    // Reset character Labels to their original state
+                    // Reset character Labels to their original state, except for the user
                     case Label label when label.Name is not "WindowTitle" and not "Stats":
-                        label.Foreground = Brushes.White;
-                        label.Content = label.Name.Replace("_Label", "");
+                        // Skip resetting the user's "YOU" label
+                        if (UserCharacterLabel != null && label == UserCharacterLabel)
+                        {
+                            continue;
+                        }
+
+                        // Reset the previous user's "YOU" label
+                        if (label != UserCharacterLabel)
+                        {
+                            label.Content = label.Name.Replace("_Label", "");
+                            label.Foreground = Brushes.White;
+                        }
                         break;
 
                     // Reset the Stats Label
@@ -229,8 +306,14 @@ namespace Sus_Companion
                         UpdateStats();
                         break;
 
-                    // Reset the Tag only (keep opacity < 1.0 to let the animation play)
+                    // Reset the Tag only (keep opacity < 1.0 to let the animation play), except for the user
                     case Border { Child: Image img }:
+                        if (UserCharacterImage != null && img == UserCharacterImage)
+                        {
+                            // Skip resetting the user's tag
+                            continue;
+                        }
+
                         img.Tag = 0;
                         break;
                 }
@@ -252,6 +335,7 @@ namespace Sus_Companion
             // Enable the button after the animation
             Refresh_Button.IsEnabled = true;
         }
+
 
         /// <summary>
         /// Starts a single 360-degree rotation animation on the refresh icon
@@ -367,15 +451,19 @@ namespace Sus_Companion
 
             foreach (Image img in images)
             {
-                // Check if the image is dead (opacity < 1.0) and define his state to 0
+                // Skip counting the User selector image
+                if (img.Name == "User")
+                    continue;
+
                 bool isDead = img.Opacity < 1.0;
                 int state = img.Tag as int? ?? 0;
 
-                // Increment the respective counters based on the image Tag (state)
+                // If the character is dead, increment the dead count
                 if (isDead)
                 {
                     deadCount++;
                 }
+                // Otherwise, increment the safe or sus count
                 else
                 {
                     aliveCount++;
@@ -401,6 +489,7 @@ namespace Sus_Companion
             span.Inlines.Add(new Run("   -   "));
             span.Inlines.Add(new Run($"{deadCount} Dead") { Foreground = Brushes.DarkSlateGray });
 
+            // Update the Stats label with the new content
             Stats.Content = span;
         }
 
@@ -469,6 +558,35 @@ namespace Sus_Companion
             }
 
             UpdateStats();
+        }
+
+        /// <summary>
+        /// Returns the associated color for a character name.
+        /// </summary>
+        private Brush GetCharacterColor(string characterName)
+        {
+            return characterName switch
+            {
+                "Red" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C61111")),
+                "Blue" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#132ED2")),
+                "Green" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#11802D")),
+                "Pink" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#EE54BB")),
+                "Orange" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F07D0D")),
+                "Yellow" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F6F657")),
+                "Black" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#3F474E")),
+                "White" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#D7E1F1")),
+                "Purple" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6B2FBC")),
+                "Brown" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#71491E")),
+                "Cyan" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#38E2DD")),
+                "Lime" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#50F039")),
+                "Maroon" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#6B2B3C")),
+                "Rose" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ECC0D3")),
+                "Banana" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFEBE")),
+                "Gray" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#708495")),
+                "Tan" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#928776")),
+                "Coral" => new SolidColorBrush((Color)ColorConverter.ConvertFromString("#EC7578")),
+                _ => Brushes.White  // Default fallback
+            };
         }
 
         #endregion
