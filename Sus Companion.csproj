@@ -168,10 +168,10 @@
 	<AssemblyTitle>Sus_Companion</AssemblyTitle>
 	<Authors>Lucas Jammes</Authors>
 	<Copyright>Copyright © Lucas Jammes 2025</Copyright>
-	<Version>1.7.0</Version>
-	<FileVersion>1.7.0</FileVersion>
-	<AssemblyVersion>1.7.0</AssemblyVersion>
-	<InformationalVersion>1.7.0</InformationalVersion>
+	<Version>1.8.0</Version>
+	<FileVersion>1.8.0</FileVersion>
+	<AssemblyVersion>1.8.0</AssemblyVersion>
+	<InformationalVersion>1.8.0</InformationalVersion>
 	<Description>Portable app to help AmongUs players!</Description>
   </PropertyGroup>
 </Project>
