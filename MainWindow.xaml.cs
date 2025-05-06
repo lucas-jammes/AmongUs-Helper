@@ -200,6 +200,10 @@ namespace Sus_Companion
             UpdateStats();
         }
 
+        private void User_Button_Click(object sender, MouseButtonEventArgs e)
+        {
+
+        }
         #endregion
 
         #region TopBar and button interaction methods

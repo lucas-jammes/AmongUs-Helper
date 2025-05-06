@@ -34,17 +34,87 @@
                    Cursor="SizeAll"
                    MouseLeftButtonDown="TopBar_MouseLeftButtonDown"/>
 
-        <!-- Title -->
+        <!-- Window Title -->
         <Label Name="WindowTitle"
                Content="Sus Companion"
                HorizontalAlignment="Left"
-               HorizontalContentAlignment="Left"
-               VerticalContentAlignment="Center"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Top"
                FontSize="40"
                VerticalAlignment="Top"
-               Height="58"
+               Height="67"
                Width="194"
-               Margin="15,10,0,0"/>
+               Margin="10,3,0,0"/>
+
+        <!-- Sound control -->
+        <Border Name="Sound_Button"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
+                Cursor="Hand"
+                ToolTip="Toggle sound"
+                HorizontalAlignment="Left"
+                Margin="701,23,0,0"
+                VerticalAlignment="Top"
+                Width="24"
+                Height="24"
+                MouseLeftButtonDown="Sound_Button_MouseLeftButtonDown">
+
+            <Path Name="SoundPath"
+                  Stretch="Uniform"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Data="M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13"/>
+        </Border>
+
+        <!-- Close button -->
+        <Border Name="Close_Button"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
+                Cursor="Hand"
+                ToolTip="Close app"
+                HorizontalAlignment="Left"
+                Margin="765,25,0,0"
+                VerticalAlignment="Top"
+                Width="20"
+                Height="20"
+                MouseLeftButtonDown="Close_Button_MouseLeftButtonDown"
+                OverridesDefaultStyle="True">
+
+            <Path Stretch="Uniform"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  Data="M4 4L20 20M20 4L4 20" HorizontalAlignment="Right" Width="20"/>
+        </Border>
+
+        <!-- Refresh button -->
+        <Border Name="Refresh_Button"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
+                Cursor="Hand"
+                ToolTip="Refresh status"
+                HorizontalAlignment="Left"
+                Margin="735,25,0,0"
+                VerticalAlignment="Top"
+                Width="20"
+                Height="20"
+                MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown">
+
+            <Path Stretch="Uniform"
+                  Stroke="White"
+                  StrokeThickness="2"
+                  StrokeStartLineCap="Round"
+                  StrokeEndLineCap="Round"
+                  HorizontalAlignment="Left"
+                  Width="20"
+                  Data="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14">
+
+                <Path.RenderTransform>
+                    <RotateTransform x:Name="RefreshRotateTransform"
+                                CenterX="10"
+                                CenterY="10" />
+                </Path.RenderTransform>
+            </Path>
+        </Border>
 
         <!-- Red character: #C61111 -->
         <Border Height="100"
@@ -1026,97 +1096,48 @@
                 VerticalAlignment="Top"
                 Width="358"/>
 
-        <!-- Sound control -->
-        <Border Name="Sound_Button"
+        <!-- Select user button -->
+        <Border Name="SelectUser_Button"
                 Background="Transparent"
                 BorderBrush="{x:Null}"
                 Cursor="Hand"
-                ToolTip="Toggle sound"
+                ToolTip="Select your character"
                 HorizontalAlignment="Left"
-                Margin="701,23,0,0"
+                Margin="15,741,0,0"
                 VerticalAlignment="Top"
-                Width="24"
-                Height="24"
-                MouseLeftButtonDown="Sound_Button_MouseLeftButtonDown">
+                Width="50"
+                Height="50">
 
-            <Path Name="SoundPath"
-                  Stretch="Uniform"
-                  Stroke="White"
-                  StrokeThickness="2"
-                  Data="M3 11V13M6 8V16M9 10V14M12 7V17M15 4V20M18 9V15M21 11V13"/>
-        </Border>
-
-        <!-- Close button -->
-        <Border Name="Close_Button"
-                Background="Transparent"
-                BorderBrush="{x:Null}"
-                Cursor="Hand"
-                ToolTip="Close app"
-                HorizontalAlignment="Left"
-                Margin="765,25,0,0"
-                VerticalAlignment="Top"
-                Width="20"
-                Height="20"
-                MouseLeftButtonDown="Close_Button_MouseLeftButtonDown"
-                OverridesDefaultStyle="True">
-
-            <Path Stretch="Uniform"
-                  Stroke="White"
-                  StrokeThickness="2"
-                  Data="M4 4L20 20M20 4L4 20" HorizontalAlignment="Right" Width="20"/>
-        </Border>
-
-        <!-- Refresh button -->
-        <Border Name="Refresh_Button"
-                Background="Transparent"
-                BorderBrush="{x:Null}"
-                Cursor="Hand"
-                ToolTip="Refresh status"
-                HorizontalAlignment="Left"
-                Margin="735,25,0,0"
-                VerticalAlignment="Top"
-                Width="20"
-                Height="20"
-                MouseLeftButtonDown="Refresh_Button_MouseLeftButtonDown">
-
-            <Path Stretch="Uniform"
-                  Stroke="White"
-                  StrokeThickness="2"
-                  StrokeStartLineCap="Round"
-                  StrokeEndLineCap="Round"
-                  HorizontalAlignment="Left"
-                  Width="20"
-                  Data="M21 3V8M21 8H16M21 8L18 5.29168C16.4077 3.86656 14.3051 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.2832 21 19.8675 18.008 20.777 14">
-
-                <Path.RenderTransform>
-                    <RotateTransform x:Name="RefreshRotateTransform"
-                                CenterX="10"
-                                CenterY="10" />
-                </Path.RenderTransform>
-            </Path>
-        </Border>
-
-        <!-- PayPal button -->
-        <Border Name="PayPal_Button"
-        Background="Transparent"
-        BorderBrush="{x:Null}"
-        Cursor="Hand"
-        ToolTip="Support the app"
-        HorizontalAlignment="Left"
-        Margin="735,760,0,0"
-        VerticalAlignment="Top"
-        Width="20"
-        Height="20"
-        MouseLeftButtonDown="PayPal_Button_MouseLeftButtonDown">
-
-            <Path Stretch="Uniform"
-            Stroke="#012169"
-            StrokeThickness="1.5"
-            Height="20"
-            VerticalAlignment="Top"
-            Data="M182.475463,7404.9 C181.260804,7410.117 177.555645,7411 172.578656,7411 L171.078137,7419 L173.825411,7419 C174.325918,7419 174.53555,7418.659 174.627828,7418.179 C175.312891,7413.848 175.216601,7414.557 175.278788,7413.879 C175.337966,7413.501 175.664951,7413 176.049108,7413 C179.698098,7413 182.118387,7411.945 182.857614,7408.158 C183.120405,7406.811 183.034145,7405.772 182.475463,7404.9 M171.134306,7410.86 L170.011926,7417 L166.535456,7417 C166.206465,7417 165.954707,7416.598 166.006864,7416.274 L168.602682,7399.751 C168.670887,7399.319 169.045014,7399 169.484337,7399 L175.718111,7399 C179.409228,7399 181.894714,7400.401 181.319983,7404.054 C180.313953,7410.56 174.737157,7410 172.199514,7410 C171.760191,7410 171.203515,7410.428 171.134306,7410.86"/>
+            <Image Name="User"
+                   Source="/Assets/Images/misc/logo.png"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Width="50"
+                   Height="50"
+                   MouseLeftButtonDown="User_Button_Click"/>
         </Border>
         
+        <!-- PayPal button -->
+        <Border Name="PayPal_Button"
+                Background="Transparent"
+                BorderBrush="{x:Null}"
+                Cursor="Hand"
+                ToolTip="Support the app"
+                HorizontalAlignment="Left"
+                Margin="735,760,0,0"
+                VerticalAlignment="Top"
+                Width="20"
+                Height="20"
+                MouseLeftButtonDown="PayPal_Button_MouseLeftButtonDown">
+
+            <Path Stretch="Uniform"
+                  Stroke="#012169"
+                  StrokeThickness="1.5"
+                  Height="20"
+                  VerticalAlignment="Top"
+                  Data="M182.475463,7404.9 C181.260804,7410.117 177.555645,7411 172.578656,7411 L171.078137,7419 L173.825411,7419 C174.325918,7419 174.53555,7418.659 174.627828,7418.179 C175.312891,7413.848 175.216601,7414.557 175.278788,7413.879 C175.337966,7413.501 175.664951,7413 176.049108,7413 C179.698098,7413 182.118387,7411.945 182.857614,7408.158 C183.120405,7406.811 183.034145,7405.772 182.475463,7404.9 M171.134306,7410.86 L170.011926,7417 L166.535456,7417 C166.206465,7417 165.954707,7416.598 166.006864,7416.274 L168.602682,7399.751 C168.670887,7399.319 169.045014,7399 169.484337,7399 L175.718111,7399 C179.409228,7399 181.894714,7400.401 181.319983,7404.054 C180.313953,7410.56 174.737157,7410 172.199514,7410 C171.760191,7410 171.203515,7410.428 171.134306,7410.86"/>
+        </Border>
+
         <!-- GitHub button -->
         <Border Name="GitHub_Button"
                 Background="Transparent"
